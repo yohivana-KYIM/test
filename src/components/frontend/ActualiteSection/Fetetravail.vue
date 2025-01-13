@@ -64,7 +64,7 @@ export default {
         },
         {
           id: 4,
-          src: "/src/assets/actualite2.jpeg"",
+          src: "/src/assets/actualite2.jpeg",
           alt: "Image 4",
         },
        
