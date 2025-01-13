@@ -30,14 +30,45 @@
 
       <!-- Image grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div
-          v-for="image in images"
-          :key="image.id"
-          class="bg-white shadow-md rounded-lg overflow-hidden"
-        >
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
           <img
-            :src="image.src"
-            :alt="image.alt"
+            src="/src/assets/remise1.jpg"
+            alt="Image 1"
+            class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+            src="/src/assets/remise2.jpg"
+            alt="Image 2"
+            class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+            src="/src/assets/remise3.jpg"
+            alt="Image 3"
+            class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+            src="/src/assets/remise4.jpg"
+            alt="Image 4"
+            class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+            src="/src/assets/remise5.jpg"
+            alt="Image 5"
+            class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+            src="/src/assets/remise6.jpg"
+            alt="Image 6"
             class="w-full h-auto object-cover rounded-t-lg aspect-square"
           />
         </div>
@@ -45,56 +76,5 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: "LeftAlignedTextWithSpan",
-  data() {
-    return {
-      images: [
-        {
-          id: 1,
-          src: "/src/assets/DSC_1357.JPG",
-          alt: "Image 1"
-        },
-        {
-          id: 2,
-          src: "/src/assets/DSC_1348.JPG",
-          alt: "Image 2"
-        },
-        {
-          id: 3,
-          src: "/src/assets/DSC_1282.JPG",
-          alt: "Image 3"
-        },
-        {
-          id: 4,
-          src: "/src/assets/DSC_1326.JPG",
-          alt: "Image 4"
-        },
-        {
-          id: 5,
-          src: "/src/assets/DSC_1332.JPG",
-          alt: "Image 5"
-        },
-        {
-          id: 6,
-          src: "/src/assets/SC_1337.JPG",
-          alt: "Image 6"
-        }
-      ],
-      shareMenuOpen: null
-    };
-  },
-  methods: {
-    toggleShareMenu(imageId) {
-      this.shareMenuOpen = this.shareMenuOpen === imageId ? null : imageId;
-    },
-    getCurrentUrl() {
-      return window.location.href;
-    }
-  }
-};
-</script>
 
 <style scoped></style>

@@ -21,77 +21,58 @@
         />
       </div>
 
-
       <h4 class="text-gray-800 font-semibold uppercase text-2xl md:text-3xl leading-tight mb-4">
        Conseil d'administration du 23 décembre 2024
       </h4>
 
       <!-- Image grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div v-for="image in images" :key="image.id" class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
           <img
-              :src="image.src"
-              :alt="image.alt"
+              src="/src/assets/admin1.jpg"
+              alt="Image 1"
               class="w-full h-auto object-cover rounded-t-lg aspect-square"
           />
-          
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+              src="/src/assets/admin2.jpg"
+              alt="Image 2"
+              class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+              src="/src/assets/admin3.jpg"
+              alt="Image 3"
+              class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+              src="/src/assets/admin4.jpg"
+              alt="Image 4"
+              class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+              src="/src/assets/admin5.jpg"
+              alt="Image 5"
+              class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img
+              src="/src/assets/admin6.jpg"
+              alt="Image 6"
+              class="w-full h-auto object-cover rounded-t-lg aspect-square"
+          />
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "LeftAlignedTextWithSpan",
-  data() {
-    return {
-      images: [
-        {
-          id: 1,
-          src: "/src/assets/actualite1.jpeg",
-          alt: "Image 1",
-        },
-        {
-          id: 2,
-          src: "/src/assets/DSC_4118.JPG",
-          alt: "Image 2",
-        },
-        {
-          id: 3,
-          src: "/src/assets/DSC_4105.JPG",
-          alt: "Image 3",
-        },
-        {
-          id: 4,
-          src: "/src/assets/DSC_4129.JPG",
-          alt: "Image 4",
-        },
-        {
-          id: 5,
-           src: "/src/assets/DSC_4134.JPG",
-           alt: "Image 5",
-         },
-        {
-          id: 6,
-          src: "/src/assets/DSC_4130.JPG",
-           alt: "Image 6",
-        },
-      ],
-      shareMenuOpen: null,
-    };
-  },
-  methods: {
-    toggleShareMenu(imageId) {
-        this.shareMenuOpen = this.shareMenuOpen === imageId ? null : imageId;
-    },
-    getCurrentUrl() {
-      return window.location.href;
-    }
-  },
-};
-</script>
-
 <style scoped>
-
 </style>
