@@ -54,17 +54,17 @@ export default {
         },
         {
           id: 2,
-          src: "/src/assets/cdecwork2.jpeg",
+          src: "/src/assets/actualite2.jpeg",
           alt: "Image 2",
         },
         {
           id: 3,
-          src: "/src/assets/cdecwork3.jpeg",
+          src: "/src/assets/actualite2.jpeg",
           alt: "Image 3",
         },
         {
           id: 4,
-          src: "/src/assets/cdecwork4.jpeg",
+          src: "/src/assets/actualite2.jpeg"",
           alt: "Image 4",
         },
        
