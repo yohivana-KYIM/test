@@ -15,7 +15,7 @@
       <!-- Cover Image -->
       <div class="mb-8">
         <img
-          src="/src/assets/actualite2.jpeg"
+          src="/src/assets/cdecwork2.jpeg"
           alt="Image de couverture du conseil d'administration"
           class="w-full h-auto object-cover rounded-lg shadow-lg aspect-video"
         />
@@ -28,14 +28,20 @@
 
       <!-- Image grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div v-for="image in images" :key="image.id" class="bg-white shadow-md rounded-lg overflow-hidden">
+        <!-- <div v-for="image in images" :key="image.id" class="bg-white shadow-md rounded-lg overflow-hidden">
           <img
               :src="image.src"
               :alt="image.alt"
               class="w-full h-auto object-cover rounded-t-lg aspect-square"
-          />
+          /> -->
           
-        </div>
+        <!-- </div> -->
+
+         <img
+          src="/src/assets/actualite2.jpeg"
+          alt="Image de couverture du conseil d'administration"
+          class="w-full h-auto object-cover rounded-lg shadow-lg aspect-video"
+        />
       </div>
     </div>
   </div>
