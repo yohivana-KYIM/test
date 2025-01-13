@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import Conseil from "../components/frontend/ActualiteSection/conseil_administration.vue";
+import Fetetravail from "../components/frontend/ActualiteSection/Fetetravail.vue";
 import Journeefemme from "../components/frontend/ActualiteSection/Journeefemme.vue";
 import Remisefonds from "../components/frontend/ActualiteSection/remisefonds.vue";
-import Fetetravail from "../components/frontend/Fetetravail/Fetetravail.vue";
 
 import ContactUs from "../components/frontend/ContactUs/contact_us.vue";
 import Gouvernance from "../components/frontend/Gouvernance/Gouvernance.vue";
@@ -44,7 +44,7 @@ const routes = [
     component: Conseil
   },
   {
-    path: "/feteTravail",
+    path: "/fetetravail",
     name: "fetetravail",
     component: Fetetravail
   },

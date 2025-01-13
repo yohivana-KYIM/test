@@ -13,7 +13,7 @@
           <img src="/src/assets/actualite2.jpeg" alt="Actualité 2" />
           <h4>Fete du travail</h4>
           <span> 1er Mai 2024</span>
-           <a href="/feteTravail" class="btn-en-savoir-plus">En savoir plus</a>
+           <a href="/Fetetravail" class="btn-en-savoir-plus">En savoir plus</a>
         </div>
         <div class="item_actualite">
           <img src="/src/assets/actualite3.jpeg" alt="Actualité 3" />
