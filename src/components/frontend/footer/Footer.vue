@@ -8,7 +8,7 @@
       </div>
       <div class="contact_information">
         <img src="../../../assets/mail.png" alt="Icone Email" />
-        <span>contact@cdec.cm</span>
+        <span>info@cdec.cm</span>
       </div>
       <div class="contact_information">
         <img src="../../../assets/calendar.png" alt="Icone Calendrier" />
