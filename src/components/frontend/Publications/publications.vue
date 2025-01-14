@@ -11,29 +11,18 @@
     <div class="actualite_group">
       <div class="owl-carousel owl-theme caroussel_actualite">
         <div class="item_actualite">
-          <img src="/src/assets/actualite1.jpeg" alt="Actualité 1" />
-          <h4>Conseil d'administration</h4>
-          <span> 23 décembre 2024 </span>
-          <a href="/conseil_administration" class="btn-en-savoir-plus">En savoir plus</a>
+          <img src="/src/assets/rapport.png" alt="Actualité 1" />
+          <h4>RAPPORT ANNUEL 2023
+CAISSE DES DÉPÔTS ET CONSIGNATIONS</h4>
+          <span> 
+LOI N°2008/003 DU 14 AVRIL 2008 RÉGISSANT LES DÉPÔTS ET CONSIGNATIONS </span>
+           <a
+              href="/docs/rapport/RapportAnnuelCDEC2023BILINGUE-Outlined.pdf" class="btn-en-savoir-plus"
+            >lire plus</a>
         </div>
-        <div class="item_actualite">
-          <img src="/src/assets/actualite2.jpeg" alt="Actualité 2" />
-          <h4>Fete du travail</h4>
-          <span> 1er Mai 2024</span>
-           <a href="/Fetetravail" class="btn-en-savoir-plus">En savoir plus</a>
-        </div>
-        <div class="item_actualite">
-          <img src="/src/assets/actualite3.jpeg" alt="Actualité 3" />
-          <h4>Journée de la femme</h4>
-          <span> 08 Mars 2024 </span>
-           <a href="/Journeefemme" class="btn-en-savoir-plus">En savoir plus</a>
-        </div>
-        <div class="item_actualite">
-          <img src="/src/assets/actualite4.jpeg" alt="Actualité 4" />
-          <h4>Remise des fonds par la BEAC</h4>
-          <span> 29 Mai 2024</span>
-           <a href="/remisefonds" class="btn-en-savoir-plus">En savoir plus</a>
-        </div>
+       
+       
+   
       </div>
     </div>
   </section>
