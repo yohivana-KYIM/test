@@ -3,8 +3,7 @@
     <div>
       <h1>La consignation judiciaire</h1>
       <h3>
-        La Consignation Judiciaire : Sécurisez Vos Intérêts pendant les Litiges
-        avec Efficacité et Équité
+       La Consignation Judiciaire : Sécurisez vos intérêts pendant les litiges avec efficacité et équité.
       </h3>
     </div>
   </section>

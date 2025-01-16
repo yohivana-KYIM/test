@@ -1,35 +1,35 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+// Importation des composants
+import Home from "../views/Home.vue";
+import ContactUs from "../components/frontend/ContactUs/contact_us.vue";
+import LacDec from "../components/frontend/LacDec/lacdec.vue";
+import Missions from "../components/frontend/Missions/missions.vue";
+import Gouvernance from "../components/frontend/Gouvernance/Gouvernance.vue";
+import ConsAdmin from "../components/frontend/Serviceslist/cons_admin.vue";
+import Organigramme from "../components/frontend/Organigramme/Organigramme.vue";
+import TextesReglementaires from "../components/frontend/TextesReglementaires/TextesReglementaires.vue";
+import ConsJudiciaire from "../components/frontend/Serviceslist/cons_judiciaire.vue";
+import ConsConvention from "../components/frontend/Serviceslist/cons_convention.vue";
+import Actualites from "../components/frontend/Publications/actualites.vue";
+import Interviews from "../components/frontend/Publications/Interviews.vue";
+import Interviews1 from "../components/frontend/Publications/Interviews1.vue";
+import Interviews2 from "../components/frontend/Publications/Interviews2.vue";
+import Publications from "../components/frontend/Publications/publications.vue";
+import GuideUtilisateurs from "../components/frontend/Publications/guide_utilisateurs.vue";
+import Communique from "../components/frontend/Publications/communique.vue";
+import Partenaires from "../components/frontend/partenaires/partenaires.vue";
+import Mediatheque from "../components/frontend/Publications/mediatheque.vue";
+import { useAuthStore } from "../stores/auth";
+import Admin from "../views/Admin/dashboard.vue";
+import LoginAdmin from "../views/Admin/loginadmin.vue";
+import payslist from "../views/Admin/pays/payslist.vue";
+import blocslist from "../views/Admin/blocs/blocslist.vue";
+import Usager from "../components/frontend/Inscription/Usager.vue";
 import Conseil from "../components/frontend/ActualiteSection/conseil_administration.vue";
 import Fetetravail from "../components/frontend/ActualiteSection/Fetetravail.vue";
 import Journeefemme from "../components/frontend/ActualiteSection/Journeefemme.vue";
 import Remisefonds from "../components/frontend/ActualiteSection/remisefonds.vue";
-
-import ContactUs from "../components/frontend/ContactUs/contact_us.vue";
-import Gouvernance from "../components/frontend/Gouvernance/Gouvernance.vue";
-import Usager from "../components/frontend/Inscription/Usager.vue";
-import LacDec from "../components/frontend/LacDec/lacdec.vue";
-import Missions from "../components/frontend/Missions/missions.vue";
-import Organigramme from "../components/frontend/Organigramme/Organigramme.vue";
-import Partenaires from "../components/frontend/partenaires/partenaires.vue";
-import Actualites from "../components/frontend/Publications/actualites.vue";
-import Communique from "../components/frontend/Publications/communique.vue";
-import GuideUtilisateurs from "../components/frontend/Publications/guide_utilisateurs.vue";
-import Interviews from "../components/frontend/Publications/Interviews.vue";
-import Interviews1 from "../components/frontend/Publications/Interviews1.vue";
-import Interviews2 from "../components/frontend/Publications/Interviews2.vue";
-import Mediatheque from "../components/frontend/Publications/mediatheque.vue";
-import Publications from "../components/frontend/Publications/publications.vue";
-import ConsAdmin from "../components/frontend/Serviceslist/cons_admin.vue";
-import ConsConvention from "../components/frontend/Serviceslist/cons_convention.vue";
-import ConsJudiciaire from "../components/frontend/Serviceslist/cons_judiciaire.vue";
-import TextesReglementaires from "../components/frontend/TextesReglementaires/TextesReglementaires.vue";
-import { useAuthStore } from "../stores/auth";
-import blocslist from "../views/Admin/blocs/blocslist.vue";
-import Admin from "../views/Admin/dashboard.vue";
-import LoginAdmin from "../views/Admin/loginadmin.vue";
-import payslist from "../views/Admin/pays/payslist.vue";
-import Home from "../views/Home.vue";
 
 const routes = [
   { path: "/", name: "home", component: Home },
@@ -38,26 +38,6 @@ const routes = [
   { path: "/missions", name: "missions", component: Missions },
   { path: "/gouvernance", name: "gouvernance", component: Gouvernance },
   { path: "/organigramme", name: "organigramme", component: Organigramme },
-  {
-    path: "/conseil_administration",
-    name: "conseil_administration",
-    component: Conseil
-  },
-  {
-    path: "/fetetravail",
-    name: "fetetravail",
-    component: Fetetravail
-  },
-  {
-    path: "/journeefemme",
-    name: "journeefemme",
-    component: Journeefemme
-  },
-  {
-    path: "/remisefonds",
-    name: "remisefonds",
-    component: Remisefonds
-  },
   {
     path: "/textes_reglementaires",
     name: "textes_reglementaires",
@@ -91,8 +71,15 @@ const routes = [
     name: "inscription_usager",
     component: Usager
   },
-
   { path: "/communique", name: "communique", component: Communique },
+  {
+    path: "/conseil_administration",
+    name: "conseil_administration",
+    component: Conseil
+  },
+  { path: "/fetetravail", name: "fetetravail", component: Fetetravail },
+  { path: "/journeefemme", name: "journeefemme", component: Journeefemme },
+  { path: "/remisefonds", name: "remisefonds", component: Remisefonds },
   { path: "/loginadmin", name: "loginadmin", component: LoginAdmin },
   {
     path: "/admin",

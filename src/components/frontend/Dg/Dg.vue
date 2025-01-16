@@ -4,9 +4,9 @@
     <div class="dg_information">
       <div class="dg_image">
         <img src="../../../assets/dg.png" alt="" />
-        <!-- <div class="content_dg">
-          <h1>Nom du Président</h1>
-        </div> -->
+        <div class="content_dg">
+          <!-- <h1>Nom du Président</h1> -->
+        </div>
       </div>
       <div class="discours_dg">
         <h2>En savoir plus sur la CDEC</h2>

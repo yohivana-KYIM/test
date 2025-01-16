@@ -9,7 +9,7 @@
             La Caisse des Dépôts et Consignations (CDEC) du Cameroun
             gère et sécurise les fonds publics et privés. Elle centralise des
             fonds provenant de diverses sources comme les cautionnements et les
-            dépôts judiciaires
+            dépôts judiciaires.
           </p>
         </div>
       </div>

@@ -3,8 +3,7 @@
     <div>
       <h1>La consignation administrative</h1>
       <h3>
-        Consignation administrative : Sécurisez vos fonds et biens en toute
-        légalité.
+      Consignation Administrative : Sécurisez vos fonds et biens en toute légalité
       </h3>
     </div>
   </section>

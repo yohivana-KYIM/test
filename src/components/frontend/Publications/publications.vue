@@ -2,7 +2,7 @@
   <section class="body_actualite">
     <div class="titre_actualite">
       <h1>Publications CDEC</h1>
-      <span>Découvrez le rapport annuel 2023 de la CDEC.</span>
+      <span>Découvrez le rapport annuel  de la CDEC.</span>
     </div>
   </section>
 

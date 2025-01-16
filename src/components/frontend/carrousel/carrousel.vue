@@ -97,7 +97,7 @@ export default {
         image: "/images/img3.jpg",
         title: "Bienvenue à la Caisse des Dépôts et Consignations",
         description:
-          "Des services de consignation et de dépôt fiables pour votre tranquillité d'esprit.",
+          " Des services de dépôts et consignations fiables pour votre tranquillité d’esprit.",
       },
       {
         image: "/images/img4.jpg",

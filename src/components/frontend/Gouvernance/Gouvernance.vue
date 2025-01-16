@@ -1,7 +1,7 @@
 <template>
   <section class="body_actualites">
     <div class="titre_actualite">
-      <h1>Gouvernances</h1>
+      <h1>Gouvernance</h1>
     </div>
   </section>
   <div

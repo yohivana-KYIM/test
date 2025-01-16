@@ -3,8 +3,7 @@
     <div>
       <h1>La consignation Conventionnelle</h1>
       <h3>
-        La Consignation Conventionnelle : Une Solution Sûre pour se Libérer de
-        ses Obligations
+       La Consignation Conventionnelle : Une solution sûre pour se libérer de ses obligations.
       </h3>
     </div>
   </section>
@@ -20,7 +19,7 @@
             deux parties, dans le cadre d'un accord privé, décident de confier
             une somme d'argent ou un bien à un tiers de confiance ou à un
             établissement financier pour en assurer la garde jusqu'à ce que
-            certaines conditions soient remplies
+            certaines conditions soient remplies.
           </p>
         </div>
         <div>
