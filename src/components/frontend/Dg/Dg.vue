@@ -3,7 +3,7 @@
     <div class="divider">MOT DU DIRECTEUR GÉNÉRAL</div>
     <div class="dg_information">
       <div class="dg_image">
-        <img src="../../../assets/dg.png" alt="" />
+        <img src="../../../assets/dg.png" alt="Directeur Général" />
         <div class="content_dg">
           <!-- <h1>Nom du Président</h1> -->
         </div>

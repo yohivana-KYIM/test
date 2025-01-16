@@ -619,7 +619,7 @@ background-size: cover;
 }
 
 .dg_image{
-width: 600px;
+width: 100%;
 position: relative;
 -webkit-animation-name: trans;
 -webkit-animation-duration: 40s;

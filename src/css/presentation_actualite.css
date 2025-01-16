@@ -286,7 +286,7 @@ nav .menu li:hover > ul{
 
 .body_actualite{
     width: 100%; 
-    background:   url("../../assets/body_actualite.jpg") ;
+   background: url("../assets/partenaire.jpg");
     height: 550px;
     object-fit: cover;
     background-size: cover;
