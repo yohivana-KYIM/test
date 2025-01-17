@@ -1,11 +1,19 @@
 <template>
   
- <section class="organigramme">
-    <div class="divider">La consignation administrative</div>
-   <h3>
+ 
+   <br/>
+  <h1 class="mb-4 text-4xl font-black md:text-5xl" style="text-align: center;">
+    <span
+      class="text-transparent bg-clip-text"
+      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+    >
+ La consignation administrative
+    </span>
+  </h1>
+<br/>
+  <h3  style="text-align: center;">
       Consignation Administrative : Sécurisez vos fonds et biens en toute légalité.
-      </h3>
-  </section>
+      </h3> <br/>
   <section class="service_informations">
     <div class="section_service">
       <img src="/src/assets/consignation.png" alt="" />

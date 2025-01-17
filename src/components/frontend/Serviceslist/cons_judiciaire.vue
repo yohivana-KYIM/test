@@ -1,11 +1,19 @@
 <template>
  
- <section class="organigramme">
-    <div class="divider">La consignation judiciaire</div>
-   <h3>
+ 
+  <br/>
+  <h1 class="mb-4 text-4xl font-black md:text-5xl" style="text-align: center;">
+    <span
+      class="text-transparent bg-clip-text"
+      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+    >
+La consignation judiciaire
+    </span>
+  </h1>
+<br/>
+  <h3 style="text-align: center;">
          La Consignation Judiciaire : Sécurisez vos intérêts pendant les litiges avec efficacité et équité.
-      </h3>
-  </section>
+      </h3> <br/>
   <section class="service_informations">
     <div class="section_service">
       <img

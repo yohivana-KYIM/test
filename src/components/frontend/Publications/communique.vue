@@ -1,8 +1,16 @@
 <template>
- 
-<section class="organigramme">
-    <div class="divider">Communiqués CDEC</div>
-  </section>
+   <br/>
+  <h1 class="mb-4 text-4xl font-black md:text-5xl" style="text-align: center;">
+    <span
+      class="text-transparent bg-clip-text"
+      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+    >
+Communiqués CDEC
+    </span>
+  </h1>
+<br/>
+
+
   <section class="section_actualite">
     <div class="liste_actualite">
      

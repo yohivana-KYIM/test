@@ -1,7 +1,15 @@
 <template>
- <section class="organigramme">
-    <div class="divider">Nos Missions</div>
-  </section>
+
+   <br/>
+  <h1 class="mb-4 text-4xl font-black md:text-5xl" style="text-align: center;">
+    <span
+      class="text-transparent bg-clip-text"
+      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+    >
+Nos Missions
+    </span>
+  </h1>
+<br/>
   <section class="body_info">
     <div class="mission_container">
   
