@@ -1,25 +1,16 @@
 <template>
-  <section class="body_information">
-    <div class="group_information">
-      <div class="prc">
-        <img src="/src/assets/img-prc.png" alt="" />
-        <h3>S.E. Paul BIYA</h3>
-        <hr />
-        <span>Président de la République du Cameroun</span>
-        <h4>Chef de l’Etat</h4>
-      </div>
-      <hr class="hr" />
-      <div class="prc info_decret">
-        <div class="prc_decret">
-          <h3>
-            DECRET N° 2011/105 DU 15 AVRIL 2011 PORTANT ORGANISATION ET
-            FONCTIONNEMENT DE LA CAISSE DES DEPOTS ET CONSIGNATIONS
-          </h3>
-          <button>Lire la suite</button>
-        </div>
-      </div>
-    </div>
-  </section>
+  <br/>
+      <br/>
+  <h1 class="mb-4 text-4xl font-black md:text-5xl" style="text-align: center;">
+    <span
+      class="text-transparent bg-clip-text"
+      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+    >
+Texte Reglementaire
+    </span>
+  </h1>
+<br/>
+      
 
   <section class="section_decret">
     <div class="decret_div">

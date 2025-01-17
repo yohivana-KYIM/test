@@ -12,7 +12,7 @@ Publications CDEC
   </h1>
 <br/>
   <section class="actualite">
-    <div class="divider">Les dernières actualités</div>
+   
     <div class="">
       <!-- Affichage d'un seul élément -->
       <div class="item_actualite">
