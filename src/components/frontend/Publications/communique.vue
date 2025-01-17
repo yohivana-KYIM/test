@@ -1,16 +1,11 @@
 <template>
-  <section class="body_actualite">
-    <div class="titre_actualite">
-      <h1>Communiqués CDEC</h1>
-      <span>
-        
-      </span>
-    </div>
+ 
+<section class="organigramme">
+    <div class="divider">Communiqués CDEC</div>
   </section>
-
   <section class="section_actualite">
     <div class="liste_actualite">
-      <div class="divider">Tous les communiqués</div>
+     
 
       <div
         class="div_communique"

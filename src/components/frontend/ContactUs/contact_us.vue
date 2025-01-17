@@ -9,8 +9,8 @@
           <input class="input_text" placeholder="Email" type="text" />
         </div>
         <div class="form_input_group">
-          <input class="input_text" placeholder="Raison" type="text" />
-          <input class="input_text" placeholder="Numero" type="text" />
+          <input class="input_text" placeholder="Raison Social" type="text" />
+          <input class="input_text" placeholder="Numéro" type="text" />
         </div>
         <div class="form_input_group">
           <textarea

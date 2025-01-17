@@ -1,13 +1,11 @@
 <template>
-  <section class="intro_services">
-    <div>
-      <h1>La consignation administrative</h1>
-      <h3>
-      Consignation Administrative : Sécurisez vos fonds et biens en toute légalité
+  
+ <section class="organigramme">
+    <div class="divider">La consignation administrative</div>
+   <h3>
+      Consignation Administrative : Sécurisez vos fonds et biens en toute légalité.
       </h3>
-    </div>
   </section>
-
   <section class="service_informations">
     <div class="section_service">
       <img src="/src/assets/consignation.png" alt="" />

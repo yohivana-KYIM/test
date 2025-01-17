@@ -1,13 +1,11 @@
 <template>
-  <section class="intro_servicess">
-    <div>
-      <h1>La consignation Conventionnelle</h1>
-      <h3>
-       La Consignation Conventionnelle : Une solution sûre pour se libérer de ses obligations.
+ 
+ <section class="organigramme">
+    <div class="divider">La consignation Conventionnelle</div>
+   <h3>
+         La Consignation Conventionnelle : Une solution sûre pour se libérer de ses obligations.
       </h3>
-    </div>
   </section>
-
   <section class="service_informations">
     <div class="section_service">
       <img src="/src/assets/consultation.png" alt="" />

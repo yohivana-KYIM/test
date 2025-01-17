@@ -1,13 +1,11 @@
 <template>
-  <section class="intro_service">
-    <div>
-      <h1>La consignation judiciaire</h1>
-      <h3>
-       La Consignation Judiciaire : Sécurisez vos intérêts pendant les litiges avec efficacité et équité.
+ 
+ <section class="organigramme">
+    <div class="divider">La consignation judiciaire</div>
+   <h3>
+         La Consignation Judiciaire : Sécurisez vos intérêts pendant les litiges avec efficacité et équité.
       </h3>
-    </div>
   </section>
-
   <section class="service_informations">
     <div class="section_service">
       <img

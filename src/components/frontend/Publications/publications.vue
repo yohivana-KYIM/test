@@ -1,11 +1,8 @@
 <template>
-  <section class="body_actualite">
-    <div class="titre_actualite">
-      <h1>Publications CDEC</h1>
-      <span>Découvrez le rapport annuel  de la CDEC.</span>
-    </div>
+ 
+<section class="organigramme">
+    <div class="divider">Publications CDEC</div>
   </section>
-
   <section class="actualite">
     <div class="divider">Les dernières actualités</div>
     <div class="">

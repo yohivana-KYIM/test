@@ -13,12 +13,13 @@
     <!-- En-tête -->
     <div class="relative z-10 mb-12 text-center">
       <h1 class="mb-4 text-4xl font-black md:text-5xl">
-        <span
-          class="text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text"
-        >
-          Médiathèque CDEC
-        </span>
-      </h1>
+    <span
+      class="text-transparent bg-clip-text"
+      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+    >
+      Médiathèque CDEC
+    </span>
+  </h1>
       <p class="text-lg text-gray-600">Découvrez nos dernières vidéos</p>
     </div>
 

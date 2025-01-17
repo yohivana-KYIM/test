@@ -1,10 +1,8 @@
 <template>
-  <section class="body_actualites">
-    <div class="titre_actualite">
-      <h1>Présentation de la CDEC</h1>
-    </div>
-  </section>
 
+<section class="organigramme">
+    <div class="divider">Présentation de la CDEC</div>
+  </section>
   <section class="body_info">
     <div class="mission_info">
       <p>
@@ -80,4 +78,5 @@ export default {
 
 <style>
 @import "../../../css/missions.css";
+@import "../../../css/lacdec.css";
 </style>

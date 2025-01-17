@@ -11,21 +11,21 @@
         </div>
         <div class="item_actualite">
           <img src="/src/assets/actualite2.jpeg" alt="Actualité 2" />
-          <h4>Fete du travail</h4>
+          <h4>Fête du travail</h4>
           <span> 1er Mai 2024</span>
-           <a href="/Fetetravail" class="btn-en-savoir-plus">Voir plus</a>
+          <a href="/Fetetravail" class="btn-en-savoir-plus">Voir plus</a>
         </div>
         <div class="item_actualite">
           <img src="/src/assets/actualite3.jpeg" alt="Actualité 3" />
           <h4>Journée de la femme</h4>
           <span> 08 Mars 2024 </span>
-           <a href="/Journeefemme" class="btn-en-savoir-plus">Voir plus</a>
+          <a href="/Journeefemme" class="btn-en-savoir-plus">Voir plus</a>
         </div>
         <div class="item_actualite">
           <img src="/src/assets/actualite4.jpeg" alt="Actualité 4" />
           <h4>Remise des fonds par la BEAC</h4>
           <span> 29 Mai 2024</span>
-           <a href="/remisefonds" class="btn-en-savoir-plus">Voir plus</a>
+          <a href="/remisefonds" class="btn-en-savoir-plus">Voir plus</a>
         </div>
       </div>
     </div>
@@ -33,7 +33,6 @@
 </template>
 
 <script setup>
-import "owl.carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import { onMounted } from "vue";
 
@@ -78,8 +77,7 @@ onMounted(() => {
 });
 </script>
 
-
-<style>
+<style scoped>
 /* @import "../css/actualites.css"; */
 
 .actualite {
@@ -92,61 +90,72 @@ onMounted(() => {
   background-attachment: fixed;
   background-size: cover;
   flex-wrap: wrap;
+  padding: 2rem 0;
 }
 
 .actualite_group {
   width: 85%;
+  margin: 0 auto;
 }
 
 .item_actualite {
   display: flex;
   flex-direction: column;
-  padding: 1em;
-  margin-bottom: 30px;
+  padding: 1.5em;
+  margin-bottom: 20px;
   margin-top: 20px;
-  transition: 1s all;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .item_actualite:hover {
-  /* box-shadow: 5px 5px 20px 3px rgba(50, 76, 156, 0.6); */
-  transform: translateY(-20px);
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
+
 .item_actualite img {
   border-radius: 8px;
+  margin-bottom: 1em;
+  width: 100%;
+  height: auto; /* Permet de conserver le ratio aspect */
+  object-fit: cover; /* Pour éviter la déformation de l'image */
 }
 
 .item_actualite h4 {
   text-align: left;
   font-weight: 600;
-  line-height: 33px;
+  line-height: 1.3;
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
 }
 
 .item_actualite span {
   color: rgba(130, 130, 130, 1);
   font-weight: 500;
-}
-.actualite_information {
-  width: 23%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin-bottom: 3em;
-  min-width: 250px;
+  font-size: 0.9em;
+  margin-bottom: 1em;
 }
 
 .btn-en-savoir-plus {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 15px;
-    background-color: #3498db;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    text-align: center;
-    transition: background-color 0.3s ease;
-  }
-  
-  .btn-en-savoir-plus:hover {
-    background-color: #2980b9;
-  }
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #324c9c;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-size: 0.9em;
+  border: 1px solid #324c9c; /* Ajout d'une bordure */
+}
+
+.btn-en-savoir-plus:hover {
+  background-color: white; /* Changement de couleur au survol */
+  color: #324c9c; /* Change la couleur du texte au survol */
+  transform: scale(1.05); /* Petit effet de zoom au survol */
+  border: 1px solid #324c9c;
+}
 </style>

@@ -1,8 +1,6 @@
 <template>
-  <section class="body_actualites">
-    <div class="titre_actualite">
-      <h1>Gouvernance</h1>
-    </div>
+   <section class="organigramme">
+    <div class="divider">Gouvernance</div>
   </section>
   <div
     class="min-h-screen bg-center bg-cover"

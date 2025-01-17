@@ -12,13 +12,17 @@
 
     <!-- Enhanced header with animation -->
     <header class="relative z-10 mb-12 text-center animate-fade-in">
-      <h1
-        class="text-4xl font-extrabold md:text-6xl lg:text-7xl text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 bg-clip-text transition-colors duration-300"
-      >
-        Interviews CDEC
-      </h1>
+     
+       <h1 class="mb-4 text-4xl font-black md:text-5xl">
+    <span
+      class="text-transparent bg-clip-text"
+      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+    >
+      Interviews CDEC
+    </span>
+  </h1>
       <p
-        class="mt-4 text-lg text-gray-600  animate-fade-in-delayed"
+        class="mt-4 text-lg text-gray-600 animate-fade-in-delayed"
       >
         Découvrez nos dernières interviews
       </p>
@@ -31,17 +35,17 @@
           type="text"
           v-model="searchQuery"
           placeholder="Rechercher une interview..."
-          class="w-full px-6 py-4 text-lg text-gray-700 bg-white  border-2 rounded-xl shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all duration-300 placeholder-gray-400"
+          class="w-full px-6 py-4 text-lg text-gray-700 placeholder-gray-400 transition-all duration-300 bg-white border-2 shadow-sm rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
         />
         <button
           v-if="searchQuery"
           @click="clearSearch"
-          class="absolute right-14 top-4 text-gray-400 hover:text-gray-600  transition-colors duration-200"
+          class="absolute text-gray-400 transition-colors duration-200 right-14 top-4 hover:text-gray-600"
         >
           <XIcon class="w-6 h-6" />
         </button>
         <SearchIcon
-          class="absolute w-6 h-6 text-gray-400 right-4 top-4 group-hover:text-indigo-500 transition-colors duration-200"
+          class="absolute w-6 h-6 text-gray-400 transition-colors duration-200 right-4 top-4 group-hover:text-indigo-500"
         />
       </div>
     </div>
@@ -50,28 +54,28 @@
     <TransitionGroup
       name="interview-list"
       tag="div"
-      class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 max-w-7xl mx-auto"
+      class="grid gap-8 mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 max-w-7xl"
     >
       <div
         v-for="interview in filteredInterviews"
         :key="interview.id"
-        class="group relative bg-white  rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden"
+        class="relative overflow-hidden transition-all duration-500 transform bg-white shadow-lg group rounded-2xl hover:shadow-2xl hover:-translate-y-2"
       >
         <!-- Image container with overlay -->
-        <div class="relative aspect-w-16 aspect-h-9 overflow-hidden">
+        <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
           <img
             :src="getAssetUrl(interview.image)"
             :alt="interview.title"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
           />
           <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/60 to-transparent group-hover:opacity-100"
           ></div>
         </div>
 
         <!-- Content with improved typography and spacing -->
         <div class="p-8">
-          <div class="flex justify-between items-center mb-4">
+          <div class="flex items-center justify-between mb-4">
             <div
               class="flex items-center space-x-4 text-sm text-gray-500 "
             >
@@ -87,20 +91,20 @@
           </div>
 
           <h3
-            class="text-xl font-bold text-gray-800  group-hover:text-indigo-600  transition-colors duration-300 line-clamp-2 mb-4"
+            class="mb-4 text-xl font-bold text-gray-800 transition-colors duration-300 group-hover:text-indigo-600 line-clamp-2"
           >
             {{ interview.title }}
           </h3>
 
           <p
-            class="text-gray-600  text-base line-clamp-2 mb-6"
+            class="mb-6 text-base text-gray-600 line-clamp-2"
             v-html="interview.excerpt"
           ></p>
 
           <div class="flex justify-center mt-6">
             <a
               :href="interview.url"
-              class="flex items-center px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-medium rounded-xl transition-colors focus:outline-none focus:ring focus:ring-green-200 focus:ring-offset-1"
+              class="flex items-center px-6 py-3 font-medium text-white transition-colors bg-green-500 hover:bg-green-600 rounded-xl focus:outline-none focus:ring focus:ring-green-200 focus:ring-offset-1"
             >
               Lire l'interview
               <ArrowRightIcon class="w-5 h-5 ml-2 animate-bounce-right" />

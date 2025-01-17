@@ -1,9 +1,13 @@
 <template>
-  <section class="body_actualite">
-    <div class="titre_actualite">
-      <h1>Nos partenaires</h1>
-    </div>
-  </section>
+  <br/>
+  <h1 class="mb-4 text-4xl font-black md:text-5xl" style="text-align: center;">
+    <span
+      class="text-transparent bg-clip-text"
+      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+    >
+      Nos partenaires
+    </span>
+  </h1>
 
   <section class="section_partenaire">
     <div class="div_partenaire">
@@ -18,7 +22,6 @@
           une banque internationale de premier plan. Elle offre une gamme
           complète de services financiers aux particuliers, aux professionnels et
           aux entreprises.
-          
         </p>
       </div>
     </div>
@@ -30,7 +33,6 @@
           La Société Commerciale de Banque (SCB) est une banque camerounaise
           bien établie qui propose des services bancaires et financiers variés à
           une clientèle diversifiée.
-         
         </p>
       </div>
     </div>
@@ -43,7 +45,6 @@
           est une banque commerciale qui joue un rôle majeur dans le paysage
           financier camerounais. Elle soutient l'économie locale grâce à ses
           services.
-         
         </p>
       </div>
     </div>
@@ -64,7 +65,9 @@
       <div class="info_partenaire">
         <img src="../../../assets/FCD.jpg" alt="Logo du FCD" />
         <p>
-          Le Fonds Commun de Développement (FCD) est un fonds camerounais dont la mission est d'apporter une contribution financière pour des projets axés sur le développement durable et social.
+          Le Fonds Commun de Développement (FCD) est un fonds camerounais dont la
+          mission est d'apporter une contribution financière pour des projets
+          axés sur le développement durable et social.
         </p>
       </div>
     </div>
@@ -73,7 +76,8 @@
       <div class="info_partenaire">
         <img src="../../../assets/banque.png" alt="Logo de la banque" />
         <p>
-          Une banque qui nous accompagne dans la gestion des transactions financières et du bon fonctionnement de notre activité.
+          Une banque qui nous accompagne dans la gestion des transactions
+          financières et du bon fonctionnement de notre activité.
         </p>
       </div>
     </div>
@@ -94,11 +98,11 @@
 </template>
 
 <script setup>
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel";
+// import "owl.carousel.css";  // Removed to fix the error
+// import "owl.carousel";  // Removed to fix the error
+import $ from 'jquery';
+
 </script>
-
-
 
 <style>
 @import "../../../css/nos_partenaires.css";

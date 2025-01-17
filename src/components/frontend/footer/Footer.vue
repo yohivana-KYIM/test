@@ -75,8 +75,8 @@
       <div class="footer_information">
         <div class="newsletter">
           <h2>NEWSLETTER</h2>
-          <form action="" method="post">
-            <input placeholder="Votre email ici" type="email" />
+          <form @submit.prevent="showToast">
+            <input v-model="email" placeholder="Votre email ici" type="email" />
             <button type="submit" class="form_button">Souscrire</button>
           </form>
         </div>
@@ -164,6 +164,10 @@
         </button>
       </div>
     </div>
+    <div v-if="showToastMessage" class="toast">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        Votre inscription a été prise en compte.
+    </div>
   </section>
 </template>
 
@@ -176,6 +180,7 @@ const messages = ref([
   { text: "Bonjour ! Comment puis-je vous aider ?", type: "received" },
 ]);
 const chatMessages = ref(null);
+const email = ref("");
 
 const openChatWidget = () => {
   isChatOpen.value = true;
@@ -233,11 +238,46 @@ onMounted(() => {
     }
   });
 });
+
+const showToastMessage = ref(false);
+const showToast = () => {
+  showToastMessage.value = true;
+  setTimeout(() => {
+    showToastMessage.value = false;
+    email.value = ""; // Réinitialise la valeur de l'email après la disparition du toast
+  }, 3000); // Le toast disparaît après 3 secondes (3000 ms)
+};
 </script>
 
 <style scoped>
 @import "../../../css/accueil.css";
-
+/* Styles du toast */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4CAF50; /* Couleur verte pour le succès */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  z-index: 1001;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeInOut 3s ease-in-out forwards;
+    display: flex;
+    align-items: center;
+  gap: 10px;
+}
+.toast svg {
+    width: 20px;
+    height: 20px;
+}
+@keyframes fadeInOut {
+    0% {opacity: 0;}
+    10% {opacity: 1;}
+    90% {opacity: 1;}
+    100% {opacity: 0;}
+}
 /* Styles de l'icône chat flottante */
 .chat-icon-container {
   position: fixed;
