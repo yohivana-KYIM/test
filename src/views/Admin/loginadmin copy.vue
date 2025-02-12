@@ -1,39 +1,19 @@
 <template>
-  <div
-    class="min-h-screen bg-[#2955A9] relative overflow-hidden flex items-center justify-center p-4"
-  >
-    <canvas ref="canvas" class="absolute inset-0 w-full h-full"></canvas>
+  <div class="min-h-screen bg-[#2955A9] relative overflow-hidden flex items-center justify-center p-4">
+    <canvas ref="canvas" class="absolute inset-0 w-full h-full backdrop-blur-sm"></canvas>
 
-    <div
-      class="max-w-md w-full bg-white rounded-3xl p-8 shadow-2xl transform hover:scale-[1.01] transition-all relative z-20 border-2 border-[#F5ED8B]/20"
-    >
+    <div class="max-w-md w-full bg-white rounded-3xl p-8 shadow-2xl transform hover:scale-[1.01] transition-all relative z-20 border-2 border-[#F5ED8B]/20">
       <div class="mb-8 text-center animate-fade-in">
         <div class="relative w-32 h-32 mx-auto mb-6">
-          <div
-            class="absolute inset-0 bg-[#2955A9] rounded-full animate-pulse opacity-20"
-          ></div>
-          <div
-            class="absolute bg-white rounded-full shadow-inner inset-2"
-          ></div>
+          <div class="absolute inset-0 bg-[#2955A9] rounded-full animate-pulse opacity-20"></div>
+          <div class="absolute bg-white rounded-full shadow-inner inset-2"></div>
           <div class="absolute inset-0 flex items-center justify-center">
-            <svg
-              class="w-16 h-16 text-[#2955A9]"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-              />
+            <svg class="w-16 h-16 text-[#2955A9]" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
         </div>
-        <h2 class="text-3xl font-bold text-[#2955A9] mb-2">
-          Caisse des Dépôts
-        </h2>
+        <h2 class="text-3xl font-bold text-[#2955A9] mb-2">Caisse des Dépôts</h2>
         <p class="text-[#2955A9]/70">Et Consignations</p>
       </div>
 
@@ -48,21 +28,10 @@
               class="w-full px-4 py-3 bg-white border-2 border-[#2955A9]/20 rounded-xl focus:ring-2 focus:ring-[#F5ED8B] focus:border-transparent transition-all text-[#2955A9] placeholder-gray-400 group-hover:border-[#F5ED8B]"
               placeholder="admin@cdc.com"
             />
-            <span
-              class="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#2955A9]/50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
-                />
-                <path
-                  d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                />
+            <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#2955A9]/50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>
             </span>
           </div>
@@ -83,32 +52,16 @@
               type="button"
               class="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#2955A9]/50 hover:text-[#2955A9] transition-colors"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  v-if="!showPassword"
-                  d="M10 12a2 2 0 100-4 2 2 0 000 4z"
-                />
-                <path
-                  v-if="!showPassword"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-                <path
-                  v-if="showPassword"
-                  d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 12C18.268 7.943 14.478 5 10 5a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                <path v-if="!showPassword" d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                <path v-if="!showPassword" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                <path v-if="showPassword" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 12C18.268 7.943 14.478 5 10 5a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" />
               </svg>
             </button>
           </div>
         </div>
 
-        <div v-if="error" class="text-sm text-red-500 animate-shake">
-          {{ error }}
-        </div>
+        <div v-if="error" class="text-sm text-red-500 animate-shake">{{ error }}</div>
 
         <button
           type="submit"
@@ -119,27 +72,13 @@
             <span v-if="!loading">Se connecter</span>
             <span v-else class="flex items-center justify-center">
               <svg class="w-5 h-5 mr-3 animate-spin" viewBox="0 0 24 24">
-                <circle
-                  class="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  stroke-width="4"
-                  fill="none"
-                />
-                <path
-                  class="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" />
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
               </svg>
               Connexion en cours...
             </span>
           </span>
-          <div
-            class="absolute inset-0 transition-transform duration-300 transform -translate-x-full bg-[#F5ED8B]/20 group-hover:translate-x-0"
-          ></div>
+          <div class="absolute inset-0 transition-transform duration-300 transform -translate-x-full bg-[#F5ED8B]/20 group-hover:translate-x-0"></div>
         </button>
       </form>
     </div>

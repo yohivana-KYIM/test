@@ -12,19 +12,18 @@
 
     <!-- Enhanced header with animation -->
     <header class="relative z-10 mb-12 text-center animate-fade-in">
-     
-       <h1 class="mb-4 text-4xl font-black md:text-5xl">
-    <span
-      class="text-transparent bg-clip-text"
-      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
-    >
-      Interviews CDEC
-    </span>
-  </h1>
+      <h1 class="mb-4 text-4xl font-black md:text-5xl">
+        <span
+          class="text-transparent bg-clip-text"
+          style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+        >
+          {{ $t('cdec_interviews') }}
+        </span>
+      </h1>
       <p
         class="mt-4 text-lg text-gray-600 animate-fade-in-delayed"
       >
-        Découvrez nos dernières interviews
+        {{ $t('discover_our_latest_interviews') }}
       </p>
     </header>
 
@@ -34,18 +33,20 @@
         <input
           type="text"
           v-model="searchQuery"
-          placeholder="Rechercher une interview..."
+          :placeholder="$t('search_interview')"
           class="w-full px-6 py-4 text-lg text-gray-700 placeholder-gray-400 transition-all duration-300 bg-white border-2 shadow-sm rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
         />
         <button
           v-if="searchQuery"
           @click="clearSearch"
           class="absolute text-gray-400 transition-colors duration-200 right-14 top-4 hover:text-gray-600"
+          aria-label="Clear search"
         >
           <XIcon class="w-6 h-6" />
         </button>
         <SearchIcon
           class="absolute w-6 h-6 text-gray-400 transition-colors duration-200 right-4 top-4 group-hover:text-indigo-500"
+          aria-label="Search"
         />
       </div>
     </div>
@@ -64,8 +65,8 @@
         <!-- Image container with overlay -->
         <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
           <img
-            :src="getAssetUrl(interview.image)"
-            :alt="interview.title"
+            :src="getAssetUrl(interview.imagePrincipaleUrl)"
+            :alt="interview.titre"
             class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
           />
           <div
@@ -77,15 +78,14 @@
         <div class="p-8">
           <div class="flex items-center justify-between mb-4">
             <div
-              class="flex items-center space-x-4 text-sm text-gray-500 "
+              class="flex items-center space-x-4 text-sm text-gray-500"
             >
               <div class="flex items-center">
                 <CalendarIcon class="w-4 h-4 mr-2" />
                 <span>{{ interview.date }}</span>
               </div>
               <div class="flex items-center">
-                <NewspaperIcon class="w-4 h-4 mr-2" />
-                <span>{{ interview.source }}</span>
+                <span class="font-semibold">{{ interview.source }}</span>
               </div>
             </div>
           </div>
@@ -93,71 +93,67 @@
           <h3
             class="mb-4 text-xl font-bold text-gray-800 transition-colors duration-300 group-hover:text-indigo-600 line-clamp-2"
           >
-            {{ interview.title }}
+            {{ interview.titre }}
           </h3>
 
           <p
             class="mb-6 text-base text-gray-600 line-clamp-2"
-            v-html="interview.excerpt"
+            v-html="interview.description"
           ></p>
 
           <div class="flex justify-center mt-6">
-            <a
-              :href="interview.url"
+            <router-link
+              :to="{ name: 'InterviewDetail', params: { slug: interview.slug } }"
               class="flex items-center px-6 py-3 font-medium text-white transition-colors bg-green-500 hover:bg-green-600 rounded-xl focus:outline-none focus:ring focus:ring-green-200 focus:ring-offset-1"
             >
-              Lire l'interview
+              {{ $t('read_interview') }}
               <ArrowRightIcon class="w-5 h-5 ml-2 animate-bounce-right" />
-            </a>
+            </router-link>
           </div>
         </div>
+      </div>
+      <div v-if="filteredInterviews.length === 0" class="col-span-full text-center text-gray-500">
+        {{ $t('no_results_found', { searchQuery: searchQuery }) }}
       </div>
     </TransitionGroup>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import {
   X as XIcon,
   Search as SearchIcon,
   Calendar as CalendarIcon,
-  Newspaper as NewspaperIcon,
   ArrowRight as ArrowRightIcon,
 } from "lucide-vue-next";
+import InterviewService from '../../../services/InterviewService';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const searchQuery = ref("");
+const interviews = ref([]);
 
-const interviews = ref([
-  {
-    id: 1,
-    title:
-      "Richard Evina Obam : « Les pouvoirs publics ont doté la CDEC des moyens lui permettant de procéder au recouvrement forcé »",
-    source: "L'Économie",
-    date: "31 Octobre 2023",
-    excerpt: `Dans une interview accordée à L'Économie, le Directeur général de la Caisse des Dépôts et Consignations du Cameroun...`,
-    image: "/images/dg.png",
-    url: "/interviews1",
-  },
-  {
-    id: 2,
-    title:
-      "Dépôts et consignations : au Cameroun, Richard Evina Obam répond au SG de la Cobac",
-    source: "EcoMatin",
-    date: "17 Juillet 2024",
-    image: "/images/interview1.jpg",
-    excerpt: `Dans une interview à EcoMatin, le DG de la CDEC invoque les dispositions des règlements de la Commission interafricaine...`,
-    url: "/interviews2",
-  },
-]);
+const fetchInterviews = async () => {
+  try {
+    const data = await InterviewService.getAllInterviews();
+    interviews.value = data;
+  } catch (error) {
+    console.error('Error fetching interviews:', error);
+  }
+};
+
+onMounted(() => {
+    fetchInterviews();
+});
 
 const filteredInterviews = computed(() => {
   if (!searchQuery.value) return interviews.value;
   const query = searchQuery.value.toLowerCase();
   return interviews.value.filter(
     (interview) =>
-      interview.title.toLowerCase().includes(query) ||
-      interview.excerpt.toLowerCase().includes(query)
+      interview.titre.toLowerCase().includes(query) // Search only by title
   );
 });
 

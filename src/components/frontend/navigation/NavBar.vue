@@ -11,89 +11,64 @@
     </div>
     <ul class="menu">
       <li>
-        <router-link to="/" class="lien">Accueil</router-link>
+        <router-link to="/" class="lien">{{ $t('home') }}</router-link>
       </li>
       <li>
-        <a href="#" class="lien">CDEC</a>
+        <a href="#" class="lien">{{ $t('cdec') }}</a>
         <ul class="dropdown">
           <li>
-            <router-link to="/lacdec" class="lien">Présentation</router-link>
+            <router-link to="/lacdec" class="lien">{{ $t('presentation') }}</router-link>
           </li>
           <li>
-            <router-link to="/missions" class="lien">Missions</router-link>
+            <router-link to="/missions" class="lien">{{ $t('Missions') }}</router-link>
           </li>
           <li>
-            <router-link to="/Gouvernance" class="lien"
-              >Gouvernance</router-link
-            >
+            <router-link to="/Gouvernance" class="lien">{{ $t('governance') }}</router-link>
           </li>
           <li>
-            <router-link to="/Organigramme" class="lien"
-              >Organigramme</router-link
-            >
+            <router-link to="/Organigramme" class="lien">{{ $t('organizational_chart') }}</router-link>
           </li>
-
           <li>
-            <router-link to="/textes_reglementaires" class="lien">
-              Textes réglementaires
-            </router-link>
+            <router-link to="/textes_reglementaires" class="lien">{{ $t('regulatory_texts') }}</router-link>
           </li>
-
           <li>
-            <router-link to="/partenaires" class="lien"
-              >Coopération et partenariats</router-link
-            >
+            <router-link to="/partenaires" class="lien">{{ $t('cooperation_partnerships') }}</router-link>
           </li>
         </ul>
       </li>
       <li>
-        <a href="#" class="lien">Services</a>
+        <a href="#" class="lien">{{ $t('services') }}</a>
         <ul class="dropdown">
           <li>
-            <router-link to="/cons_admin" class="lien"
-              >Consignation Administrative</router-link
-            >
+            <router-link to="/cons_admin" class="lien">{{ $t('admin_deposits') }}</router-link>
           </li>
           <li>
-            <router-link to="/cons_judiciaire" class="lien"
-              >Consignation Judiciaire</router-link
-            >
+            <router-link to="/cons_judiciaire" class="lien">{{ $t('judicial_deposits') }}</router-link>
           </li>
           <li>
-            <router-link to="/cons_convention" class="lien"
-              >Consignation Conventionnelle</router-link
-            >
+            <router-link to="/cons_convention" class="lien">{{ $t('conventional_deposits') }}</router-link>
           </li>
         </ul>
       </li>
       <li>
-        <a href="#" class="lien">Actualités</a>
+        <a href="#" class="lien">{{ $t('news') }}</a>
         <ul class="dropdown">
           <li>
-            <router-link to="/communique" class="lien">Communiqués</router-link>
+            <router-link to="/communique" class="lien">{{ $t('press_releases') }}</router-link>
           </li>
           <li>
-            <router-link to="/publications" class="lien"
-              >Publications</router-link
-            >
+            <router-link to="/publications" class="lien">{{ $t('publications') }}</router-link>
           </li>
           <li>
-            <router-link to="/Interviews" class="lien">Interviews</router-link>
+            <router-link to="/Interviews" class="lien">{{ $t('interviews') }}</router-link>
           </li>
           <li>
-            <router-link to="/mediatheque" class="lien"
-              >Mediathèque
-            </router-link>
+            <router-link to="/mediatheque" class="lien">{{ $t('media_library') }}</router-link>
           </li>
-          <!-- <li>
-            <router-link to="/guide_utilisateurs" class="lien"
-              >Guide utilisateur</router-link
-            >
-          </li> -->
         </ul>
       </li>
       <li>
-        <a class="lien">Projets et Programme</a>
+        <a class="lien">{{ $t('projects_programs') }}</a>
       </li>
     </ul>
   </nav>
@@ -105,8 +80,10 @@
 </template>
 
 <script setup>
-// Ajout de la fonctionnalité toggle menu pour mobile
 import { onMounted } from "vue";
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n();
 
 onMounted(() => {
   const toggle = document.querySelector(".toggle");

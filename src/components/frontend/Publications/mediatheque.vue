@@ -13,14 +13,14 @@
     <!-- En-tête -->
     <div class="relative z-10 mb-12 text-center">
       <h1 class="mb-4 text-4xl font-black md:text-5xl">
-    <span
-      class="text-transparent bg-clip-text"
-      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
-    >
-      Médiathèque CDEC
-    </span>
-  </h1>
-      <p class="text-lg text-gray-600">Découvrez nos dernières vidéos</p>
+        <span
+          class="text-transparent bg-clip-text"
+          style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
+        >
+          {{ $t('cdec_media_library') }}
+        </span>
+      </h1>
+      <p class="text-lg text-gray-600">{{ $t('discover_our_latest_videos') }}</p>
     </div>
 
     <!-- Barre de recherche -->
@@ -29,7 +29,7 @@
         <input
           type="text"
           v-model="searchQuery"
-          placeholder="Rechercher une vidéo..."
+          :placeholder="$t('search_video')"
           class="w-full px-4 py-3 text-gray-700 bg-white border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none"
         />
         <button
@@ -73,7 +73,7 @@
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         <div
           v-for="(video, index) in filteredVideos"
-          :key="video.youtubeId"
+          :key="video.id"
           class="relative overflow-hidden bg-white shadow-lg rounded-xl group"
         >
           <!-- Conteneur vidéo -->
@@ -86,7 +86,7 @@
               class="absolute inset-0 transition-shadow duration-300 group-hover:shadow-xl"
             >
               <img
-                :src="`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`"
+                :src="`https://img.youtube.com/vi/${video.youtube_id}/hqdefault.jpg`"
                 :alt="video.title"
                 class="object-cover w-full h-full transition-transform duration-300 cursor-pointer group-hover:scale-105"
                 loading="lazy"
@@ -96,7 +96,7 @@
 
             <div v-else class="absolute inset-0">
               <iframe
-                :src="`https://www.youtube.com/embed/${video.youtubeId}?autoplay=1&rel=0&showinfo=0`"
+                :src="`https://www.youtube.com/embed/${video.youtube_id}?autoplay=1&rel=0&showinfo=0`"
                 frameborder="0"
                 allowfullscreen
                 class="w-full h-full"
@@ -111,7 +111,7 @@
               {{ video.title }}
             </h3>
             <p class="mb-2 text-sm text-gray-500">
-              {{ video.date || "CDEC Cameroun" }}
+              {{ video.date || $t('cdec_cameroun') }}
             </p>
             <div class="flex items-center justify-between">
               <!-- Bouton Regarder -->
@@ -126,12 +126,12 @@
                 >
                   <path d="M3 22v-20l18 10-18 10z" />
                 </svg>
-                Regarder
+                {{ $t('watch') }}
               </button>
 
               <!-- Bouton Ouvrir avec YouTube -->
               <a
-                :href="`https://www.youtube.com/watch?v=${video.youtubeId}`"
+                :href="`https://www.youtube.com/watch?v=${video.youtube_id}`"
                 target="_blank"
                 class="flex items-center px-3 py-2 text-sm text-gray-600 transition-colors duration-200 bg-gray-200 rounded-lg hover:bg-gray-300"
               >
@@ -144,50 +144,44 @@
                     d="M19.615 2.997c-2.024-.539-10.295-.564-12.326 0-2.024.539-2.024 3.858 0 4.398 2.024.539 10.295.564 12.326 0 2.024-.539 2.024-3.858 0-4.398zM5.13 7.451c-.514.137-.794.751-.59 1.208l4.656 10.982c.094.222.282.343.491.343.213 0 .402-.121.496-.343l4.672-10.982c.203-.457-.078-1.071-.59-1.208-1.472-.393-3.491-.457-4.93-.457-1.439 0-3.458.064-4.93.457z"
                   ></path>
                 </svg>
-                Ouvrir
+                {{ $t('open') }}
               </a>
             </div>
           </div>
         </div>
       </div>
+       <div v-if="!loading && videos.length === 0" class="mx-auto text-center text-gray-500">
+            {{ $t('no_videos_available') }}
+      </div>
     </div>
+  
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
+import VideoService from '../../../services/VideoService';
+import { useI18n } from 'vue-i18n';
 
-// Vidéos disponibles
-const videos = ref([
-  {
-    title: "La Caisse des Dépôts et consignations devient opérationnelle",
-    youtubeId: "0PA2z5sGOZ8",
-    date: "2024",
-  },
-  {
-    title: "Décryptage : Richard Evina Obam , Directeur général CDEC Cameroun",
-    youtubeId: "OUGW0dtCFPQ",
-    date: "2024",
-  },
-  {
-    title: "COOPÉRATION CDEC – BÉAC",
-    youtubeId: "sNrgeSAwYTc",
-    date: "2024",
-  },
-  {
-    title: "CDEC – Direction Générale des Impôts",
-    youtubeId: "YGj1nkmMuAE",
-    date: "2024",
-  },
-  {
-    title: "PRESIDENCE ACTU - Richard EVINA OBAM, Directeur Général CDEC",
-    youtubeId: "9BPO-m08Zwk",
-    date: "2024",
-  },
-]);
+const { t } = useI18n();
 
-// Recherche
+const videos = ref([]);
 const searchQuery = ref("");
+const selectedVideoIndex = ref(null);
+const loading = ref(true);
+
+
+onMounted(async () => {
+   loading.value = true;
+  try {
+    const response = await VideoService.getAllVideos();
+    videos.value = response.data;
+  } catch (error) {
+    console.error("Error fetching videos:", error);
+  } finally {
+     loading.value = false;
+  }
+});
 
 const filteredVideos = computed(() => {
   if (!searchQuery.value) {
@@ -199,15 +193,10 @@ const filteredVideos = computed(() => {
   );
 });
 
-// Effacer la recherche
 const clearSearch = () => {
   searchQuery.value = "";
 };
 
-// Index de la vidéo sélectionnée
-const selectedVideoIndex = ref(null);
-
-// Lecture d'une vidéo
 const playVideo = (index) => {
   if (selectedVideoIndex.value === index) {
     selectedVideoIndex.value = null;
@@ -216,7 +205,6 @@ const playVideo = (index) => {
   }
 };
 
-// Bulles animées
 const getBubbleStyle = (index) => {
   const size = Math.sin(index) * 4 + 8;
   const x = (index * 17) % 100;

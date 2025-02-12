@@ -1,21 +1,19 @@
 <template>
-  
-
-    <br/>
+  <br/>
   <h1 class="mb-4 text-4xl font-black md:text-5xl" style="text-align: center;">
     <span
       class="text-transparent bg-clip-text"
       style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
     >
-Gouvernance
+      {{ $t('governance') }}
     </span>
   </h1>
-<br/>
+  <br/>
 
   <div
     class="min-h-screen bg-center bg-cover"
     :style="{ backgroundImage: `url(${backgroundImage})` }"
-    aria-label="Image de fond représentant la gouvernance"
+    :aria-label="$t('governance_background_image_alt')"
   >
     <div
       class="min-h-screen p-6 duration-700 ease-in-out transform translate-y-6 opacity-0 bg-white/80 md:p-10 animate-fade-in"
@@ -35,19 +33,19 @@ Gouvernance
             class="bg-[#F0DF74]/10 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             <h2 class="text-2xl font-semibold text-[#324C9C] mb-4">
-              TUTELLE TECHNIQUE / FINANCIÈRE
+              {{ $t('technical_financial_supervision') }}
             </h2>
             <p class="font-medium text-gray-800">
-              Ministère des Finances (MINFI)
+              {{ $t('ministry_of_finance') }}
             </p>
           </div>
           <div
             class="bg-[#324C9C]/5 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             <h2 class="text-2xl font-semibold text-[#324C9C] mb-4">
-              CONSEIL D'ADMINISTRATION
+              {{ $t('board_of_directors') }}
             </h2>
-            <h3 class="font-bold text-[#324C9C] mb-2">PRÉSIDENT</h3>
+            <h3 class="font-bold text-[#324C9C] mb-2">{{ $t('president') }}</h3>
             <div
               class="space-y-4 duration-700 ease-in-out transform translate-x-6 opacity-0 animate-fade-in-right"
             >
@@ -58,8 +56,7 @@ Gouvernance
                   M. MOH TANGONGHO Sylvester
                 </p>
                 <p class="text-gray-600">
-                  Directeur Général du Trésor, de la Coopération Financière et
-                  Monétaire
+                  {{ $t('dg_treasury') }}
                 </p>
               </div>
             </div>
@@ -69,7 +66,7 @@ Gouvernance
           class="mt-8 bg-[#F0DF74]/5 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 opacity-0 transform translate-y-6 duration-700 ease-in-out animate-fade-in-up"
         >
           <h2 class="text-2xl font-semibold text-[#324C9C] mb-6">
-            MEMBRES DU CONSEIL D'ADMINISTRATION
+            {{ $t('board_members') }}
           </h2>
           <div class="grid gap-4 md:grid-cols-2">
             <div
@@ -79,7 +76,7 @@ Gouvernance
               :style="`animation-delay: ${index * 0.2}s;`"
             >
               <p class="font-semibold text-gray-800">{{ member.name }}</p>
-              <p class="text-gray-600">{{ member.role }}</p>
+              <p class="text-gray-600">{{ $t(member.role) }}</p>
             </div>
           </div>
         </div>
@@ -88,42 +85,38 @@ Gouvernance
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref } from 'vue';
 import backgroundImage from "../../../assets/gouvernance.jpg";
+import { useI18n } from 'vue-i18n';
 
-export default {
-  name: "Gouvernance",
-  data() {
-    return {
-      backgroundImage, // Use the imported image
-      boardMembers: [
-        {
-          name: "M. AYEM MOGER Jean-Claude",
-          role: "Représentant de la Présidence de la République",
-        },
-        {
-          name: "M. NOAH Jean François",
-          role: "Représentant des Services du Premier ministre",
-        },
-        {
-          name: "M. METOU'OU AMVELA Constant Roger",
-          role: "Représentant du Ministère des Finances",
-        },
-        {
-          name: "Mme. KAGHERE RIPA Palimatou Nounou",
-          role: "Représentant du Ministère de l'Économie, de la Planification et de l'Aménagement du Territoire",
-        },
-        {
-          name: "M. ANGOUING Michel Ange",
-          role: "Représentant du Ministère de la Justice",
-        },
-      ],
-    };
+const { t } = useI18n();
+
+const boardMembers = ref([
+  {
+    name: "M. AYEM MOGER Jean-Claude",
+    role: "representative_presidency",
   },
-};
+  {
+    name: "M. NOAH Jean François",
+    role: "representative_prime_minister",
+  },
+  {
+    name: "M. METOU'OU AMVELA Constant Roger",
+    role: "representative_finance_ministry",
+  },
+  {
+    name: "Mme. KAGHERE RIPA Palimatou Nounou",
+    role: "representative_economy_ministry",
+  },
+  {
+    name: "M. ANGOUING Michel Ange",
+    role: "representative_justice_ministry",
+  },
+]);
 </script>
 
-<style>
+<style scoped>
 @import "../../../css/lacdec.css";
 
 .min-h-screen {

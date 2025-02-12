@@ -1,121 +1,209 @@
 <template>
- 
-
-   <br/>
-  <h1 class="mb-4 text-4xl font-black md:text-5xl" style="text-align: center;">
-    <span
-      class="text-transparent bg-clip-text"
-      style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
-    >
-Publications CDEC
-    </span>
-  </h1>
-<br/>
-  <section class="actualite">
-   
-    <div class="">
-      <!-- Affichage d'un seul élément -->
-      <div class="item_actualite">
-        <div class="">
-          <img src="/src/assets/rapport.png" alt="Actualité 1" />
-        </div>
-        <h4>RAPPORT ANNUEL 2023 CAISSE DES DÉPÔTS ET CONSIGNATIONS</h4>
-        <span>
-          LOI N°2008/003 DU 14 AVRIL 2008 RÉGISSANT LES DÉPÔTS ET CONSIGNATIONS
-        </span>
-        <a
-          href="/docs/rapport/RapportAnnuelCDEC2023BILINGUE-Outlined.pdf"
-          class="btn-en-savoir-plus"
-        >
-          Lire plus
-        </a>
+  <div class="publications-container">
+    <br />
+    <h1 class="mb-4 text-4xl font-black text-center md:text-5xl">
+      <span
+        class="text-transparent bg-clip-text"
+        style="background-color: #324C9C; -webkit-background-clip: text; color: transparent;"
+      >
+        {{ $t('cdec_publications') }}
+      </span>
+    </h1>
+    <br />
+    <section class="actualite">
+      <div v-if="loading" class="flex items-center justify-center h-64">
+        <div class="w-12 h-12 border-b-4 border-blue-800 rounded-full animate-spin"></div>
       </div>
-    </div>
-  </section>
+      <div v-else-if="publications.length === 0" class="py-10 text-center text-gray-500">
+        <i class="mb-4 text-6xl text-gray-400 fas fa-folder-open"></i>
+        <p>{{ $t('no_publications_available') }}</p>
+      </div>
+      <div v-else class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          v-for="publication in publications"
+          :key="publication.id"
+          class="item_actualite group"
+        >
+          <div v-if="publication.photo" class="image-container">
+            <img :src="publication.photo" :alt="publication.title" />
+          </div>
+          <div class="content">
+            <h4 class="truncate group-hover:text-blue-800" :title="publication.title">
+              {{ publication.title }}
+            </h4>
+            <span v-if="publication.publication_date">
+              <i class="mr-2 text-gray-400 fas fa-calendar-alt"></i>
+              {{ $t('published_on') }}: {{ new Date(publication.publication_date).toLocaleDateString() }}
+            </span>
+            <p v-if="publication.description" class="line-clamp-3">
+              {{ publication.description }}
+            </p>
+            <a
+              v-if="publication.document"
+              :href="publication.document"
+              class="btn-en-savoir-plus"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="mr-2 fas fa-external-link-alt"></i> {{ $t('open_document') }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
 
-<style>
+<script setup>
+import { ref, onMounted } from "vue";
+import PublicationService from "../../../services/PublicationService";
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
+const publications = ref([]);
+const loading = ref(true);
+
+const fetchPublications = async () => {
+  try {
+    loading.value = true;
+    publications.value = await PublicationService.getAllPublications();
+  } catch (error) {
+    console.error("Error fetching publications:", error);
+    publications.value = [];
+  } finally {
+    loading.value = false;
+  }
+};
+
+onMounted(() => {
+  fetchPublications();
+});
+</script>
+
+<style scoped>
 @import "../../../css/presentation_actualite.css";
 
-.actualite {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  background-color: rgba(246, 248, 247, 1);
-  flex-wrap: wrap;
+.publications-container {
+  padding: 1.5rem;
+  background-color: #f4f6f8;
 }
 
-.actualite_group {
-  width: 85%;
+.actualite {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .item_actualite {
   display: flex;
   flex-direction: column;
-  padding: 1.5em;
-  margin-bottom: 30px;
-  margin-top: 20px;
-  transition: 1s all;
+  padding: 1.5rem;
   background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
 }
 
 .item_actualite:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.item_actualite::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: #324C9C;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.item_actualite:hover::before {
+  opacity: 1;
 }
 
 .image-container {
-  /* Modification ici pour une taille d'image réduite */
-    width: 35%; /* Réduction de la largeur de l'image */
+  width: 100%;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  align-self: center; /* Centrer l'image */
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transform-origin: center;
 }
 
 .image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-    transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
-.item_actualite:hover .image-container img{
-    transform: scale(1.05);
+
+.item_actualite:hover .image-container img {
+  transform: scale(1.05);
+  filter: brightness(0.85);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .item_actualite h4 {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #324C9C;
+  margin-bottom: 0.5rem;
   text-align: left;
-  font-weight: 600;
-  line-height: 1.4em;
-  margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
 
 .item_actualite span {
-  color: rgba(130, 130, 130, 1);
-  font-weight: 500;
-  font-size: 0.9em;
-  margin-bottom: 15px;
-    display: block;
+  color: #6b7280;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.item_actualite p {
+  color: #374151;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
 }
 
 .btn-en-savoir-plus {
-  display: inline-block;
-  margin-top: 5px;
-  padding: 10px 20px;
-  background-color: #3498db;
+  align-self: flex-start;
+  padding: 0.6rem 1.2rem;
+  background-color: #324C9C;
   color: white;
   text-decoration: none;
-  border-radius: 6px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-    font-weight: 500;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn-en-savoir-plus:hover {
-  background-color: #2980b9;
+  background-color: #27387f;
+  transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+  .item_actualite h4 {
+    font-size: 1.4rem;
+  }
+
+  .btn-en-savoir-plus {
+    padding: 0.8rem 1.5rem;
+  }
 }
 </style>

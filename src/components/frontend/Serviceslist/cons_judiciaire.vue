@@ -7,13 +7,15 @@
       class="text-transparent bg-clip-text"
       style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
     >
-La consignation judiciaire
-    </span>
+      {{ $t('judicial_deposits') }}
+   </span>
   </h1>
-<br/>
-  <h3 style="text-align: center;">
-         La Consignation Judiciaire : Sécurisez vos intérêts pendant les litiges avec efficacité et équité.
-      </h3> <br/>
+  <br/>
+  <h3  style="text-align: center;">
+ 
+    {{ $t('judicial_deposits_tagline') }}
+  </h3>
+  <br/>
   <section class="service_informations">
     <div class="section_service">
       <img
@@ -22,41 +24,34 @@ La consignation judiciaire
       />
       <div class="presentation_service">
         <div>
-          <h3>Qu'est-ce que c'est ?</h3>
+          <h3>{{ $t('what_is_it') }}?</h3>
           <p>
-            <b>La consignation judiciaire</b> est une procédure juridique qui
-            permet de mettre une somme d'argent ou un bien sous la garde d'une
-            autorité (souvent un tribunal) pendant la durée d'un litige.
+            <b>{{ $t('judicial_deposits_bold') }}</b>
+            {{ $t('judicial_deposits_desc') }}
           </p>
         </div>
         <div>
-          <h3>Quels sont ses avantages ?</h3>
+          <h3>{{ $t('what_are_the_advantages') }}?</h3>
           <ul>
             <li>
-              <b>Protection contre les Fraudes :</b> La consignation empêche
-              l'une des parties de détourner ou de dissiper les fonds ou les
-              biens pendant la durée du litige.
+              <b>{{ $t('protection_against_fraud') }}</b>
+              {{ $t('protection_against_fraud_desc') }}
             </li>
             <li>
-              <b>Neutralité :</b> Les fonds ou les biens consignés sont sous la
-              garde d'une autorité impartiale, garantissant une répartition
-              équitable selon la décision judiciaire.
+              <b>{{ $t('neutrality') }}</b>
+              {{ $t('neutrality_desc') }}
             </li>
             <li>
-              <b>Incitation à un Règlement Amiable :</b> Sachant que les fonds
-              ou les biens sont consignés, les parties peuvent être plus
-              enclines à négocier et à parvenir à un accord amiable.
+              <b>{{ $t('incentive_amicable_settlement') }}</b>
+              {{ $t('incentive_amicable_settlement_desc') }}
             </li>
             <li>
-              <b>Réduction des Risques Financiers :</b> La consignation réduit
-              les risques financiers pour les créanciers en s'assurant que les
-              fonds seront disponibles pour le paiement des dettes ou des
-              obligations.
+              <b>{{ $t('reduction_financial_risks') }}</b>
+              {{ $t('reduction_financial_risks_desc') }}
             </li>
             <li>
-              <b>Clarté des Transactions :</b> La consignation rend les
-              transactions plus transparentes et traçables, ce qui peut être
-              utile en cas de vérifications ou d'audits.
+              <b>{{ $t('clarity_transactions') }}</b>
+              {{ $t('clarity_transactions_desc') }}
             </li>
           </ul>
         </div>
@@ -66,64 +61,49 @@ La consignation judiciaire
 
   <section class="section_activite">
     <div class="div_activite">
-      <div class="divider">Nos différentes activités</div>
+      <div class="divider">{{ $t('our_different_activities') }}</div>
       <div class="list_activite">
         <div>
-          <span
-            >Consignations consécutives à une décision judiciaire exécutoire
-            nonobstant opposition ou appel</span
-          >
+          <span>{{ $t('deposits_following_enforceable_judgment') }}</span>
         </div>
         <div>
-          <span
-            >Consignations consécutives aux décisions exécutoires par
-            provision</span
-          >
+          <span>{{ $t('deposits_following_provisional_enforcement') }}</span>
         </div>
         <div>
-          <span>Cautionnements des officiers publics ministériels</span>
+          <span>{{ $t('guarantees_public_officials') }}</span>
         </div>
-        <div><span>Cautionnements de rapatriement</span></div>
+        <div><span>{{ $t('repatriation_guarantees') }}</span></div>
       </div>
       <div class="list_activite">
-        <div><span>Cautionnements des candidats aux élections</span></div>
-        <div><span>Fonds placés sous séquestre</span></div>
+        <div><span>{{ $t('guarantees_election_candidates') }}</span></div>
+        <div><span>{{ $t('funds_placed_escrow') }}</span></div>
         <div>
-          <span
-            >Fonds issus des produits de vente sur saisie en attente de
-            distribution</span
-          >
+          <span>{{ $t('funds_from_seizure_sales') }}</span>
         </div>
-        <div><span>Fonds des greffes</span></div>
+        <div><span>{{ $t('funds_registry') }}</span></div>
       </div>
       <div class="list_activite">
-        <div><span>Consignations pour main-d’œuvre pénale</span></div>
-        <div><span>Fonds de la curatelle</span></div>
+        <div><span>{{ $t('deposits_penal_labor') }}</span></div>
+        <div><span>{{ $t('curatorship_funds') }}</span></div>
         <div>
-          <span
-            >Fonds rendus indisponibles par l’effet d’une enquête ou d’une
-            instruction judiciaire</span
-          >
+          <span>{{ $t('funds_unavailable_investigation') }}</span>
         </div>
         <div>
-          <span
-            >Retenues opérées à la suite des saisies sur les rémunérations</span
-          >
+          <span>{{ $t('withholdings_following_seizures') }}</span>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<script>
-export default {
-  name: "ConsignationJudiciaire",
-};
+<script setup>
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 </script>
 
-<style>
-@import "../../../css/cons_judiciare.css";
-
+<style scoped>
+@import "../../../css/cons_admin.css";
 
 /* Ajoutez ici vos styles spécifiques si nécessaires */
 </style>

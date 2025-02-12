@@ -1,85 +1,186 @@
+
+
+
+
 <template>
   <section class="actualite">
-    <div class="divider">Les dernières actualités</div>
-    <div class="actualite_group">
-      <div class="owl-carousel owl-theme caroussel_actualite">
-        <div class="item_actualite">
-          <img src="/src/assets/actualite1.jpeg" alt="Actualité 1" />
-          <h4>Conseil d'administration</h4>
-          <span> 23 décembre 2024 </span>
-          <a href="/conseil_administration" class="btn-en-savoir-plus">Voir plus</a>
+   <div class="divider">{{ $t('latest_news_title') }}</div>
+
+    <div class="relative w-full px-4 mx-auto max-w-7xl overflow-hidden">
+      <div
+        ref="carouselRef"
+        class="relative flex transition-transform duration-700 ease-out"
+        :style="{ transform: `translateX(-${currentOffset}px)` }"
+        @mouseenter="pauseAutoScroll"
+        @mouseleave="resumeAutoScroll"
+      >
+        <div
+          v-for="(actualite, index) in actualites"
+          :key="index"
+          class="flex-shrink-0"
+          :class="isMobile ? 'w-full' : 'w-1/3'"
+        >
+          <div class="mx-3">
+            <div class="h-full bg-white rounded-xl shadow-md transition-all duration-300 hover:shadow-lg">
+              <div class="relative aspect-video overflow-hidden rounded-t-xl">
+                <img
+                  :src="getImageUrl(actualite.image)"
+                  :alt="actualite.titre"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  @error="handleImageError"
+                />
+              </div>
+
+              <div class="p-5">
+                <h3 class="text-lg font-semibold text-blue-900 mb-2 line-clamp-2">
+                  {{ actualite.titre }}
+                </h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                  {{ actualite.description }}
+                </p>
+
+                <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                  <time class="text-sm text-gray-500">{{ formatDate(actualite.datePublication) }}</time>
+                  <router-link
+                    :to="{ name: 'ActualiteDetail', params: { slug: actualite.slug } }"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-900 rounded-lg transition-all duration-300 hover:bg-blue-800 hover:shadow-md"
+                  >
+                    Voir plus
+                    <svg class="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="item_actualite">
-          <img src="/src/assets/actualite2.jpeg" alt="Actualité 2" />
-          <h4>Fête du travail</h4>
-          <span> 1er Mai 2024</span>
-          <a href="/Fetetravail" class="btn-en-savoir-plus">Voir plus</a>
-        </div>
-        <div class="item_actualite">
-          <img src="/src/assets/actualite3.jpeg" alt="Actualité 3" />
-          <h4>Journée de la femme</h4>
-          <span> 08 Mars 2024 </span>
-          <a href="/Journeefemme" class="btn-en-savoir-plus">Voir plus</a>
-        </div>
-        <div class="item_actualite">
-          <img src="/src/assets/actualite4.jpeg" alt="Actualité 4" />
-          <h4>Remise des fonds par la BEAC</h4>
-          <span> 29 Mai 2024</span>
-          <a href="/remisefonds" class="btn-en-savoir-plus">Voir plus</a>
-        </div>
+      </div>
+
+      <!-- Dots de navigation -->
+      <div class="flex justify-center mt-8 space-x-2">
+        <button
+          v-for="index in Math.ceil(actualites.length / itemsPerPage)"
+          :key="index"
+          @click="goToPage(index - 1)"
+          class="w-2 h-2 rounded-full transition-all duration-300"
+          :class="[
+            currentPage === index - 1 
+              ? 'w-6 bg-blue-900' 
+              : 'bg-blue-200 hover:bg-blue-300'
+          ]"
+          aria-label="Aller à la page"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import "owl.carousel/dist/assets/owl.carousel.css";
-import { onMounted } from "vue";
+import { ref, onMounted, onUnmounted, computed, watch } from 'vue';
+import ActualiteService from '../../../services/ActualiteService';
+
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+const actualites = ref([]);
+const currentOffset = ref(0);
+const carouselRef = ref(null);
+const currentPage = ref(0);
+const autoScrollInterval = ref(null);
+const isMobile = ref(false);
+
+const itemsPerPage = computed(() => isMobile.value ? 1 : 3);
+
+const getImageUrl = (path) => path || '/placeholder-image.png';
+
+const handleImageError = (event) => {
+  event.target.src = '/placeholder-image.png';
+};
+
+const formatDate = (date) => {
+  if (!date) return 'Date inconnue';
+  return new Date(date).toLocaleDateString('fr-FR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+};
+
+const updateOffset = () => {
+  if (!carouselRef.value) return;
+  const containerWidth = carouselRef.value.offsetWidth;
+  currentOffset.value = currentPage.value * (containerWidth / itemsPerPage.value);
+};
+
+const goToPage = (page) => {
+  currentPage.value = page;
+  updateOffset();
+};
+
+const nextSlide = () => {
+  const maxPage = Math.ceil(actualites.value.length / itemsPerPage.value) - 1;
+  currentPage.value = currentPage.value >= maxPage ? 0 : currentPage.value + 1;
+  updateOffset();
+};
+
+const startAutoScroll = () => {
+  autoScrollInterval.value = setInterval(nextSlide, 5000);
+};
+
+const pauseAutoScroll = () => {
+  if (autoScrollInterval.value) {
+    clearInterval(autoScrollInterval.value);
+  }
+};
+
+const resumeAutoScroll = () => {
+  pauseAutoScroll();
+  startAutoScroll();
+};
+
+const handleResize = () => {
+  isMobile.value = window.innerWidth < 768;
+  updateOffset();
+};
+
+// Initialisation
+const init = async () => {
+  try {
+    actualites.value = await ActualiteService.getAllActualites();
+    handleResize();
+    startAutoScroll();
+  } catch (error) {
+    console.error('Erreur lors du chargement des actualités:', error);
+  }
+};
+
+// Watchers et Lifecycle hooks
+watch(isMobile, () => {
+  currentPage.value = 0;
+  updateOffset();
+});
 
 onMounted(() => {
-  $(".caroussel_actualite").owlCarousel({
-    loop: true,
-    margin: 20,
-    nav: false,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      600: {
-        items: 2,
-      },
-      1000: {
-        items: 3,
-      },
-    },
-  });
+  init();
+  window.addEventListener('resize', handleResize);
+});
 
-  $(".owl-carousel").owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: false,
-    autoplay: true,
-    autoplayTimeout: 1000,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      600: {
-        items: 3,
-      },
-      1000: {
-        items: 5,
-      },
-    },
-  });
+onUnmounted(() => {
+  pauseAutoScroll();
+  window.removeEventListener('resize', handleResize);
 });
 </script>
 
-<style scoped>
-/* @import "../css/actualites.css"; */
 
+
+
+
+
+
+
+
+<style scoped>
 .actualite {
   display: flex;
   align-items: center;
@@ -91,71 +192,23 @@ onMounted(() => {
   background-size: cover;
   flex-wrap: wrap;
   padding: 2rem 0;
-}
-
-.actualite_group {
-  width: 85%;
-  margin: 0 auto;
-}
-
-.item_actualite {
-  display: flex;
-  flex-direction: column;
-  padding: 1.5em;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  border-radius: 12px;
-  background-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.item_actualite:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-}
-
-.item_actualite img {
-  border-radius: 8px;
-  margin-bottom: 1em;
   width: 100%;
-  height: auto; /* Permet de conserver le ratio aspect */
-  object-fit: cover; /* Pour éviter la déformation de l'image */
+}
+.actualite {
+  @apply py-16 bg-gray-50;
 }
 
-.item_actualite h4 {
-  text-align: left;
-  font-weight: 600;
-  line-height: 1.3;
-  margin-bottom: 0.5em;
-  font-size: 1.1em;
+/* Animation pour le hover des cartes */
+.hover\:shadow-lg {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-.item_actualite span {
-  color: rgba(130, 130, 130, 1);
-  font-weight: 500;
-  font-size: 0.9em;
-  margin-bottom: 1em;
+.hover\:shadow-lg:hover {
+  transform: translateY(-2px);
 }
 
-.btn-en-savoir-plus {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #324c9c;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-  text-align: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-size: 0.9em;
-  border: 1px solid #324c9c; /* Ajout d'une bordure */
-}
-
-.btn-en-savoir-plus:hover {
-  background-color: white; /* Changement de couleur au survol */
-  color: #324c9c; /* Change la couleur du texte au survol */
-  transform: scale(1.05); /* Petit effet de zoom au survol */
-  border: 1px solid #324c9c;
+/* Optimisation des performances d'animation */
+.transition-transform {
+  will-change: transform;
 }
 </style>

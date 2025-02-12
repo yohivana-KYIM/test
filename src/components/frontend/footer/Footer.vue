@@ -3,16 +3,16 @@
     <!-- Contenu du footer existant -->
     <div class="footer">
       <div class="contact_information">
-        <img src="../../../assets/call.png" alt="Icone Téléphone" />
+        <img src="../../../assets/call.png" :alt="$t('phone_icon')" />
         <span>+237 2 22 23 61 03</span>
       </div>
       <div class="contact_information">
-        <img src="../../../assets/mail.png" alt="Icone Email" />
+        <img src="../../../assets/mail.png" :alt="$t('email_icon')" />
         <span>info@cdec.cm</span>
       </div>
       <div class="contact_information">
-        <img src="../../../assets/calendar.png" alt="Icone Calendrier" />
-        <span>LUN à VEN. 08H00 à 16h00</span>
+        <img src="../../../assets/calendar.png" :alt="$t('calendar_icon')" />
+        <span>{{ $t('work_schedule') }}</span>
       </div>
     </div>
     <div class="footer">
@@ -20,10 +20,10 @@
         <div class="social_information">
           <img
             src="../../../assets/cdec.png"
-            alt="Logo CDEC"
+            :alt="$t('cdec_logo')"
             class="logo_footer"
           />
-          <h3>Rejoignez-nous</h3>
+          <h3>{{ $t('join_us') }}</h3>
           <div class="social_icon">
             <!-- Icône Facebook -->
             <a
@@ -31,7 +31,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="../../../assets/facebook.png" alt="Facebook" />
+              <img src="../../../assets/facebook.png" :alt="$t('facebook')" />
             </a>
 
             <!-- Icône Twitter (X) -->
@@ -40,7 +40,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="../../../assets/twitter.png" alt="Twitter" />
+              <img src="../../../assets/twitter.png" :alt="$t('twitter')" />
             </a>
 
             <!-- Icône LinkedIn -->
@@ -49,42 +49,42 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src="../../../assets/linkedin.png" alt="LinkedIn" />
+              <img src="../../../assets/linkedin.png" :alt="$t('linkedin')" />
             </a>
           </div>
         </div>
       </div>
       <div class="footer_information">
         <div class="social_information">
-          <h2>Liens Utiles</h2>
+          <h2>{{ $t('useful_links') }}</h2>
           <div class="lien_footer">
             <!-- Lien vers l'accueil -->
-            <router-link to="/accueil">Accueil</router-link>
+            <router-link to="/accueil">{{ $t('home') }}</router-link>
 
             <!-- Lien vers la présentation -->
-            <router-link to="/lacdec">Présentation</router-link>
+            <router-link to="/lacdec">{{ $t('presentation') }}</router-link>
 
             <!-- Lien vers la page Contact-nous -->
-            <router-link to="/contact_us">Nous contacter</router-link>
+            <!-- <router-link to="/contact_us">{{ $t('contact_us') }}</router-link> -->
 
             <!-- Lien vers la page Actualités -->
-            <router-link to="/actualites">Actualités</router-link>
+            <router-link to="/#actualites">{{ $t('news') }}</router-link>
           </div>
         </div>
       </div>
       <div class="footer_information">
         <div class="newsletter">
-          <h2>NEWSLETTER</h2>
-          <form @submit.prevent="showToast">
-            <input v-model="email" placeholder="Votre email ici" type="email" />
-            <button type="submit" class="form_button">Souscrire</button>
+          <h2>{{ $t('newsletter') }}</h2>
+          <form @submit.prevent="subscribeToNewsletter">
+            <input v-model="email" :placeholder="$t('newsletter_placeholder')" type="email" />
+            <button type="submit" class="form_button">{{ $t('subscribe') }}</button>
           </form>
         </div>
       </div>
     </div>
     <div class="copyright">
-      <span>Copyright CDEC © 2024. Tous droits réservés</span>
-      <span>Propulsé par EVENTIFY AGENCY</span>
+      <span>{{ $t('copyright') }}</span>
+      <span>{{ $t('powered_by') }}</span>
     </div>
 
     <!-- Icône chat flottante -->
@@ -127,7 +127,7 @@
               d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
             />
           </svg>
-          <h3>Chat en ligne</h3>
+          <h3>{{ $t('chat_online') }}</h3>
         </div>
         <button @click="closeChatWidget" class="close-button">×</button>
       </div>
@@ -144,7 +144,7 @@
         <input
           v-model="newMessage"
           @keyup.enter="sendMessage"
-          placeholder="Écrivez votre message..."
+          :placeholder="$t('chat_placeholder')"
         />
         <button @click="sendMessage" class="send-button">
           <svg
@@ -166,18 +166,22 @@
     </div>
     <div v-if="showToastMessage" class="toast">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-        Votre inscription a été prise en compte.
+        {{ $t('subscription_success') }}
     </div>
   </section>
 </template>
 
 <script setup>
 import { ref, watch, onMounted } from "vue";
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+import SubscriberService from '../../../services/SubscriberService';
 
 const isChatOpen = ref(false);
 const newMessage = ref("");
 const messages = ref([
-  { text: "Bonjour ! Comment puis-je vous aider ?", type: "received" },
+  { text: t('chat_greeting'), type: "received" },
 ]);
 const chatMessages = ref(null);
 const email = ref("");
@@ -213,7 +217,7 @@ const sendMessage = () => {
 
     setTimeout(() => {
       messages.value.push({
-        text: "Merci pour votre message. Un conseiller vous répondra bientôt.",
+        text: t('chat_response'),
         type: "received",
       });
     }, 1000);
@@ -240,12 +244,20 @@ onMounted(() => {
 });
 
 const showToastMessage = ref(false);
-const showToast = () => {
-  showToastMessage.value = true;
-  setTimeout(() => {
-    showToastMessage.value = false;
-    email.value = ""; // Réinitialise la valeur de l'email après la disparition du toast
-  }, 3000); // Le toast disparaît après 3 secondes (3000 ms)
+
+const subscribeToNewsletter = async () => {
+    try {
+        await SubscriberService.createSubscriber({ email: email.value });
+        showToastMessage.value = true;
+        setTimeout(() => {
+            showToastMessage.value = false;
+            email.value = "";
+        }, 3000);
+    } catch (error) {
+        console.error("Error subscribing to newsletter:", error);
+        // Afficher une alerte ou un message d'erreur plus visible
+        alert(t('subscription_error')); // Assurez-vous d'avoir une traduction pour subscription_error
+    }
 };
 </script>
 

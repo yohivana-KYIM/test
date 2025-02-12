@@ -1,6 +1,6 @@
 <template>
   <section class="section_stat">
-    <div class="divider">Principaux Indicateurs de 2023</div>
+ <div class="divider">{{ $t('key_indicators_2023_title') }}</div>
     <div class="stat_information">
       <div class="wrapper">
         <div
@@ -21,25 +21,31 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import StatService from '../../../services/StatService'; 
+const stats = ref([]);
+import { useI18n } from 'vue-i18n';
 
-const stats = ref([
-  { value: 1564, label: "Total des dépôts et consignations (millions FCFA)" },
-  { value: 40, label: "Provisions pour risques et charges (millions FCFA)" },
-  { value: 1587, label: "Total des fonds transféré (millions FCFA)" },
-  { value: 3917, label: "Bilan (millions FCFA)" },
-  { value: -1172, label: "Résultat net (millions FCFA)" },
-  { value: 1106, label: "Dépense (millions FCFA)" },
-  { value: 3360, label: "Capital social (millions FCFA)" },
-  { value: null, label: "Placements financiers (millions FCFA)" },
-  { value: null, label: "Revenu (millions FCFA)" },
-]);
-
+const { t } = useI18n();
 const formatValue = (value) => {
   if (value === null) return "........";
   return Math.abs(value).toLocaleString();
 };
 
-onMounted(() => {
+onMounted(async () => {
+  try {
+    const data = await StatService.getAllStats();
+    stats.value = data; // Assigne directement les données récupérées
+
+    // Initialise l'animation après avoir récupéré les données
+    initializeCounterAnimation();
+
+  } catch (error) {
+    console.error("Erreur lors de la récupération des statistiques :", error);
+    // Gérer l'erreur (afficher un message à l'utilisateur, etc.)
+  }
+});
+
+const initializeCounterAnimation = () => {
   const valueDisplays = document.querySelectorAll(".num");
   const interval = 5000;
 
@@ -59,7 +65,7 @@ onMounted(() => {
       }
     }, duration);
   });
-});
+};
 </script>
 
 <style scoped>

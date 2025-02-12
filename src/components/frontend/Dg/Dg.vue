@@ -1,6 +1,6 @@
 <template>
   <section class="section_dg">
-    <div class="divider">MOT DU DIRECTEUR GÉNÉRAL</div>
+    <div class="divider">{{ $t('ceo_message') }}</div>
     <div class="dg_information">
       <div class="dg_image">
         <img src="../../../assets/dg.png" alt="Directeur Général" />
@@ -9,14 +9,10 @@
         </div>
       </div>
       <div class="discours_dg">
-        <h2>En savoir plus sur la CDEC</h2>
+        <h2> {{ $t('learn_more_cdec') }}</h2>
         <span>"</span>
         <p>
-          Une caisse de dépôts et consignations n’a même pas vocation à faire de
-          bénéfices. Elle est là pour combler les défaillances du marché. Elle a
-          ses aspects positifs qu’on ne peut pas négliger. Mais, ces aspects
-          positifs ne peuvent perdurer que si des actions pertinentes sont
-          faites.
+        {{ $t('ceo_quote') }}
         </p>
         <span>"</span>
         <!-- <button>En savoir plus..</button> -->
@@ -32,3 +28,12 @@
 
 
 </style>
+<script setup>
+import { ref, onMounted } from 'vue';
+
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n(); // Use 't' for translation function
+
+
+</script>
