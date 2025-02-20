@@ -1,65 +1,73 @@
 import DataService from "./DataService";
 
 const SponsorService = {
-  // Récupère tous les sponsors
   async getAllSponsors() {
     try {
-      const response = await DataService.get("/api/sponsors");
-      return response.data;
-    } catch (error) {
-      console.error("Erreur lors de la récupération des sponsors:", error);
-      throw error;
-    }
-  },
-
-  // Récupère un sponsor par son ID
-  async getSponsorById(id) {
-    try {
-      const response = await DataService.get(`/api/sponsors/${id}`);
-      return response.data;
-    } catch (error) {
-      console.error(
-        `Erreur lors de la récupération du sponsor avec ID ${id}:`,
-        error
-      );
-      throw error;
-    }
-  },
-
-  // Crée un nouveau sponsor
-  async createSponsor(formData) {
-    try {
-      const response = await DataService.post("/api/sponsors", formData, {
-      
+      const response = await DataService.get("/api/sponsors", {
+        headers: { "Accept-Language": localStorage.getItem("locale") || "fr" }
       });
       return response.data;
     } catch (error) {
-      console.error("Erreur lors de la création du sponsor:", error);
-      throw error.response?.data || error;
+      console.error(
+        "❌ Erreur lors de la récupération des sponsors :",
+        error.response?.data || error.message
+      );
+      throw error;
     }
   },
-  // Met à jour un sponsor
-  async updateSponsor(id, formData) {
+
+  async getSponsorById(id) {
     try {
-      const response = await DataService.put(`/api/sponsors/${id}`, formData);
+      const response = await DataService.get(`/api/sponsors/${id}`, {
+        headers: { "Accept-Language": localStorage.getItem("locale") || "fr" }
+      });
       return response.data;
     } catch (error) {
       console.error(
-        `Erreur lors de la mise à jour du sponsor avec l'id ${id}`,
-        error
+        `❌ Erreur lors de la récupération du sponsor ID ${id} :`,
+        error.response?.data || error.message
       );
-      throw error.response?.data || error;
+      throw error;
     }
   },
-  // Supprime un sponsor
+
+  async createSponsor(sponsorData) {
+    try {
+      const response = await DataService.post("/api/sponsors", sponsorData);
+      return response.data;
+    } catch (error) {
+      console.error(
+        "❌ Erreur lors de la création du sponsor :",
+        error.response?.data || error.message
+      );
+      throw error;
+    }
+  },
+
+  async updateSponsor(id, sponsorData) {
+    try {
+      const response = await DataService.put(
+        `/api/sponsors/${id}`,
+        sponsorData
+      );
+      return response.data;
+    } catch (error) {
+      console.error(
+        `❌ Erreur lors de la mise à jour du sponsor ID ${id} :`,
+        error.response?.data || error.message
+      );
+      throw error;
+    }
+  },
+
   async deleteSponsor(id) {
     try {
-      const response = await DataService.delete(`/api/sponsors/${id}`);
-      return response.data;
+      await DataService.delete(`/api/sponsors/${id}`);
+      return { message: "✅ Sponsor supprimé avec succès" };
     } catch (error) {
       console.error(
-        `Erreur lors de la suppression du sponsor avec l'id ${id}`,
-        error
+        `❌ Erreur lors de la suppression du sponsor ID ${id} :`,
+        error.response?.data || error.message
       );
       throw error;
     }

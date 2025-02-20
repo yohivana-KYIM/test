@@ -173,6 +173,11 @@ const menuItems = ref([
         name: "Publications",
         path: "/Admin/publications",
       },
+       {
+        name: "mediatheque",
+        path: "/Admin/videos",
+      },
+
       {
         name: "Reglementaires",
         path: "/Admin/reglementations",

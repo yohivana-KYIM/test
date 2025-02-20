@@ -17,7 +17,8 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import Vue3EasyDataTable from "vue3-easy-data-table";
 import "vue3-easy-data-table/dist/style.css";
 import i18n from "./i18n";
-
+// import fr from "./locales/fr.json"; // Make sure these files exist
+// import en from "./locales/en.json";
 // Initialize the app
 const app = createApp(App);
 

@@ -88,7 +88,7 @@
     </div>
 
     <!-- Icône chat flottante -->
-    <div class="chat-icon-container" @click="openChatWidget" v-if="!isChatOpen">
+    <!-- <div class="chat-icon-container" @click="openChatWidget" v-if="!isChatOpen">
       <div class="chat-icon">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -106,7 +106,7 @@
           />
         </svg>
       </div>
-    </div>
+    </div> -->
 
     <!-- Widget de chat -->
     <div class="chat-widget" v-if="isChatOpen">

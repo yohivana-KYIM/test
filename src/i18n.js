@@ -40,8 +40,11 @@ const messages = {
     cooperation_partnerships: "Cooperation and Partnerships",
     projects_programs: "Projects and Programs",
     admin_deposits: "Administrative Deposits",
-    admin_deposits_desc:
-      "Administrative deposit is a legal operation where funds or assets are deposited with an administrative authority or public body as a guarantee or for provisional settlement of a disputed situation or for other legal reasons.",
+
+        admin_deposits_desc:
+
+ "is a legal operation where funds or assets are deposited with an administrative authority or public body as a guarantee or for provisional settlement of a disputed situation or for other legal reasons.",
+
     judicial_deposits: "Judicial Deposits",
     judicial_deposits_desc:
       "Judicial deposit is a legal procedure that allows a sum of money or an asset to be placed under the authority of a court during the course of litigation.",
@@ -133,8 +136,7 @@ const messages = {
     admin_deposits_tagline:
       "Secure your funds and assets in complete legality.",
     what_is_it: "What is it?",
-    admin_deposits_desc:
-      "Administrative deposit is a legal operation where funds or assets are deposited with an administrative authority or public body as a guarantee or for provisional settlement of a disputed situation or for other legal reasons.",
+
     what_are_the_advantages: "What are its advantages?",
     securing_funds_assets: "Securing funds or assets:",
     securing_funds_assets_desc:
@@ -250,16 +252,76 @@ const messages = {
     cdec_cameroun: "CDEC Cameroon",
     watch: "Watch",
     open: "Open",
-    no_videos_available: "No videos available."
+    no_videos_available: "No videos available.",
+
+    consignation_title: "Administrative Consignment",
+    consignation_subtitle:
+      "Administrative Consignment: Secure your funds and assets in complete legality.",
+    what_is_it: "What is it?",
+    consignation_definition:
+      "<b>Administrative consignment</b> is a legal procedure by which funds or assets are deposited with an administrative authority or public body as collateral or provisional settlement of a disputed situation or for other legal reasons.",
+    advantages: "What are its advantages?",
+    advantage_1:
+      "<b>Securing funds or assets:</b> Consignment ensures that the funds or assets in question are protected and available until the dispute is resolved or the final decision is made. This avoids the risk of dissipation or misuse of resources.",
+    advantage_2:
+      "<b>Guarantee of execution:</b> It provides a financial or material guarantee, ensuring that legal obligations will be respected. The parties know that the necessary resources are consigned and ready to be used according to the final decision.",
+    advantage_3:
+      "<b>Reducing the risk of fraud:</b> Consignment with a public authority reduces the risk of fraud or embezzlement of funds, as the authority acts as a neutral and secure third party.",
+    activities: "Our different activities",
+    activity_1: "Bonds of public accountants",
+    activity_2: "Guarantees on public contracts",
+    activity_3:
+      "Guarantees for occupation of administrative housing or public domain",
+    activity_4: "Guarantees of ministerial public officers",
+    activity_5: "Repatriation bonds",
+    activity_6: "Bonds of candidates for elections",
+    activity_7:
+      "Consignments for personal contribution and advance on vehicle purchase",
+    activity_8: "Consignments for logging",
+    activity_9:
+      "Consignments of the quota share of fees allocated to the courts",
+    activity_10: "Consignments for criminal labor",
+    activity_11: "Guardianship fund"
   },
   fr: {
+    consignation_title: "La consignation administrative",
+    consignation_subtitle:
+      "Consignation Administrative : Sécurisez vos fonds et biens en toute légalité.",
+    what_is_it: "Qu'est ce que c'est?",
+    consignation_definition:
+      "<b>La consignation administrative</b> est une procédure légale par laquelle des fonds ou des biens sont déposés auprès d'une autorité administrative ou d'un organisme public à titre de garantie ou de règlement provisoire d'une situation en litige ou pour d'autres raisons légales.",
+    advantages: "Quelles sont ses avantages?",
+    advantage_1:
+      "<b>Sécurisation des fonds ou des biens :</b> La consignation assure que les fonds ou les biens en question sont protégés et disponibles jusqu'à la résolution du litige ou la décision finale. Cela évite les risques de dissipation ou de détournement des ressources.",
+    advantage_2:
+      "<b>Garantie d'exécution :</b> Elle fournit une garantie financière ou matérielle, assurant que les obligations légales seront respectées. Les parties savent que les ressources nécessaires sont consignées et prêtes à être utilisées selon la décision finale.",
+    advantage_3:
+      "<b>Réduction des risques de fraude :</b> La consignation auprès d'une autorité publique réduit les risques de fraude ou de détournement des fonds, car l'autorité agit en tant que tiers neutre et sécurisé.",
+    admin_deposits_desc:
+      "est une opération légale par laquelle des fonds ou des biens sont déposés auprès d’une autorité administrative ou d’un organisme public à titre de garantie ou de règlement provisoire d’une situation en litige ou pour d’autres raisons légales.",
+
+    activities: "Nos différentes activités",
+    activity_1: "Cautionnements des comptables publics",
+    activity_2: "Cautionnements sur les marchés publics",
+    activity_3:
+      "Cautionnements pour occupation d’un logement administratif ou du domaine public",
+    activity_4: "Cautionnements des officiers publics ministériels",
+    activity_5: "Cautionnements de rapatriement",
+    activity_6: "Cautionnements des candidats aux élections",
+    activity_7:
+      "Consignations pour apport personnel et avance sur achat de véhicule",
+    activity_8: "Consignations pour coupe de bois",
+    activity_9:
+      "Consignations de la quote-part des émoluments affectés aux tribunaux",
+    activity_10: "Consignations pour main-d’œuvre pénale",
+    activity_11: "Fonds de la curatelle",
     cdec_media_library: "Médiathèque CDEC",
-  discover_our_latest_videos: "Découvrez nos dernières vidéos",
-  search_video: "Rechercher une vidéo...",
-  cdec_cameroun: "CDEC Cameroun",
-  watch: "Regarder",
-  open: "Ouvrir",
-  no_videos_available: "Aucune vidéo disponible.",
+    discover_our_latest_videos: "Découvrez nos dernières vidéos",
+    search_video: "Rechercher une vidéo...",
+    cdec_cameroun: "CDEC Cameroun",
+    watch: "Regarder",
+    open: "Ouvrir",
+    no_videos_available: "Aucune vidéo disponible.",
     cdec_interviews: "Interviews CDEC",
     discover_our_latest_interviews: "Découvrez nos dernières interviews",
     search_interview: "Rechercher une interview...",
@@ -301,9 +363,8 @@ const messages = {
     sponsor: "Sponsor",
     no_sponsors_available: "Aucun sponsor disponible",
     projects_programs: "Projets et Programmes",
-    admin_deposits: "Consignations Administratives",
-    admin_deposits_desc:
-      "La Consignation Administrative est une opération légale par laquelle des fonds ou des biens sont déposés auprès d’une autorité administrative ou d’un organisme public à titre de garantie ou de règlement provisoire d’une situation en litige ou pour d’autres raisons légales.",
+    admin_deposits: "La Consignation Administrative",
+
     judicial_deposits: "Consignations Judiciaires",
     judicial_deposits_desc:
       "La Consignation Judiciaire est une procédure juridique qui permet de mettre une somme d’argent ou un bien sous l’autorité d’une autorité (souvent un tribunal) pendant la durée d’un litige.",
@@ -410,8 +471,7 @@ const messages = {
     administrative_deposits: "Consignation Administrative",
     admin_deposits_tagline: "Sécurisez vos fonds et biens en toute légalité.",
     what_is_it: "Qu'est ce que c'est?",
-    admin_deposits_desc:
-      "La consignation administrative est une procédure légale par laquelle des fonds ou des biens sont déposés auprès d'une autorité administrative ou d'un organisme public à titre de garantie ou de règlement provisoire d'une situation en litige ou pour d'autres raisons légales.",
+
     what_are_the_advantages: "Quelles sont ses avantages?",
     securing_funds_assets: "Sécurisation des fonds ou des biens :",
     securing_funds_assets_desc:
@@ -462,8 +522,7 @@ const messages = {
       "Administrative Deposit: Secure your funds and assets with complete legality.",
     what_is_it: "What is it?",
     admin_deposits_bold: "Administrative deposit",
-    admin_deposits_desc:
-      "is a legal procedure by which funds or assets are deposited with an administrative authority or public body as a guarantee or for the provisional settlement of a disputed situation or for other legal reasons.",
+
     what_are_the_advantages: "What are its advantages?",
     securing_funds_assets: "Securing funds or assets:",
     securing_funds_assets_desc:
@@ -540,14 +599,14 @@ const messages = {
   }
 };
 
+// 
+
 const i18n = createI18n({
   legacy: false,
   globalInjection: true,
-  locale: "fr",
+  locale: localStorage.getItem("locale") || "fr", // Langue par défaut
   fallbackLocale: "en",
   messages,
-  missingWarn: true,
-  fallbackWarn: true
 });
 
 export default i18n;

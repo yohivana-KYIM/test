@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const DataService = axios.create({
- baseURL: "https://accentprojets.cm/public",
+ //
+  baseURL: "https://accentprojets.cm/public",
    //baseURL: 'http://localhost:8000',
   headers: {
     "X-Requested-With": "XMLHttpRequest",
@@ -26,7 +27,7 @@ DataService.interceptors.response.use(
       //  Si vous obtenez un 401 non autorisé,
       localStorage.removeItem("token");
       // rediriger l'utilisateur vers la page de connexion.
-      window.location.href = "/login";
+      window.location.href = "/loginadmin";
       // on redirige pas car le code ne tourne pas sur le navigateur
     }
     return Promise.reject(error);

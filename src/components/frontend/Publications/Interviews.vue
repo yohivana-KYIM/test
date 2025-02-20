@@ -1,40 +1,26 @@
 <template>
-  <div
-    class="relative min-h-screen p-4 bg-gradient-to-br from-gray-50 via-white to-gray-100 md:p-8"
-  >
-    <!-- Background bubbles with improved animation -->
-    <div
-      v-for="n in 15"
-      :key="n"
-      class="bubble"
-      :style="getBubbleStyle(n)"
-    ></div>
+  <div class="relative min-h-screen p-4 bg-gradient-to-br from-gray-50 via-white to-gray-100 md:p-8">
+    <!-- Background bubbles -->
+    <div v-for="n in 15" :key="n" class="bubble" :style="getBubbleStyle(n)"></div>
 
-    <!-- Enhanced header with animation -->
+    <!-- Header -->
     <header class="relative z-10 mb-12 text-center animate-fade-in">
-      <h1 class="mb-4 text-4xl font-black md:text-5xl">
-        <span
-          class="text-transparent bg-clip-text"
-          style="background-color: #324c9c; -webkit-background-clip: text; color: transparent;"
-        >
-          {{ $t('cdec_interviews') }}
-        </span>
+      <h1 class="mb-4 text-4xl font-black md:text-5xl text-cdec-primary">
+        {{ $t('cdec_interviews') }}
       </h1>
-      <p
-        class="mt-4 text-lg text-gray-600 animate-fade-in-delayed"
-      >
+      <p class="mt-4 text-lg text-gray-600 animate-fade-in-delayed">
         {{ $t('discover_our_latest_interviews') }}
       </p>
     </header>
 
-    <!-- Improved search bar -->
+    <!-- Search Bar -->
     <div class="relative z-10 max-w-xl mx-auto mb-12">
       <div class="relative group">
         <input
           type="text"
           v-model="searchQuery"
           :placeholder="$t('search_interview')"
-          class="w-full px-6 py-4 text-lg text-gray-700 placeholder-gray-400 transition-all duration-300 bg-white border-2 shadow-sm rounded-xl focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"
+          class="w-full px-6 py-4 text-lg text-gray-700 placeholder-gray-400 transition-all duration-300 bg-white border-2 shadow-sm rounded-xl focus:border-cdec-primary focus:ring-2 focus:ring-cdec-primary-light hover:border-cdec-primary"
         />
         <button
           v-if="searchQuery"
@@ -44,14 +30,17 @@
         >
           <XIcon class="w-6 h-6" />
         </button>
-        <SearchIcon
-          class="absolute w-6 h-6 text-gray-400 transition-colors duration-200 right-4 top-4 group-hover:text-indigo-500"
+        <button
+          @click="performSearch"
+          class="absolute text-gray-400 transition-colors duration-200 right-4 top-4 hover:text-cdec-primary"
           aria-label="Search"
-        />
+        >
+          <SearchIcon class="w-6 h-6" />
+        </button>
       </div>
     </div>
 
-    <!-- Enhanced interview cards grid -->
+    <!-- Interview Cards Grid -->
     <TransitionGroup
       name="interview-list"
       tag="div"
@@ -60,46 +49,43 @@
       <div
         v-for="interview in filteredInterviews"
         :key="interview.id"
-        class="relative overflow-hidden transition-all duration-500 transform bg-white shadow-lg group rounded-2xl hover:shadow-2xl hover:-translate-y-2"
+        class="relative overflow-hidden transition-all duration-500 transform bg-white shadow-lg group rounded-2xl hover:shadow-2xl hover:-translate-y-2 hover:scale-105"
       >
-        <!-- Image container with overlay -->
+        <!-- Image Container -->
         <div class="relative overflow-hidden aspect-w-16 aspect-h-9">
           <img
             :src="getAssetUrl(interview.imagePrincipaleUrl)"
             :alt="interview.titre"
             class="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
           />
           <div
             class="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/60 to-transparent group-hover:opacity-100"
           ></div>
         </div>
 
-        <!-- Content with improved typography and spacing -->
+        <!-- Content -->
         <div class="p-8">
           <div class="flex items-center justify-between mb-4">
-            <div
-              class="flex items-center space-x-4 text-sm text-gray-500"
-            >
+            <div class="flex items-center space-x-4 text-sm text-gray-500">
               <div class="flex items-center">
                 <CalendarIcon class="w-4 h-4 mr-2" />
                 <span>{{ interview.date }}</span>
               </div>
-              <div class="flex items-center">
-                <span class="font-semibold">{{ interview.source }}</span>
-              </div>
+              <!-- Source as a clickable link -->
+              <!-- <div class="flex items-center">
+                  <a :href="interview.sourceUrl" target="_blank" rel="noopener noreferrer" class="text-cdec-primary hover:text-cdec-primary-dark font-semibold transition-colors duration-200">
+                    {{ interview.source }}
+                  </a>
+              </div> -->
             </div>
           </div>
 
-          <h3
-            class="mb-4 text-xl font-bold text-gray-800 transition-colors duration-300 group-hover:text-indigo-600 line-clamp-2"
-          >
+          <h3 class="mb-4 text-xl font-bold text-gray-800 transition-colors duration-300 group-hover:text-cdec-primary line-clamp-2">
             {{ interview.titre }}
           </h3>
 
-          <p
-            class="mb-6 text-base text-gray-600 line-clamp-2"
-            v-html="interview.description"
-          ></p>
+          <p class="mb-6 text-base text-gray-600 line-clamp-2" v-html="interview.description"></p>
 
           <div class="flex justify-center mt-6">
             <router-link
@@ -145,7 +131,7 @@ const fetchInterviews = async () => {
 };
 
 onMounted(() => {
-    fetchInterviews();
+  fetchInterviews();
 });
 
 const filteredInterviews = computed(() => {
@@ -159,6 +145,11 @@ const filteredInterviews = computed(() => {
 
 const clearSearch = () => {
   searchQuery.value = "";
+};
+
+const performSearch = () => {
+  // Implement search logic if needed
+  console.log("Searching for:", searchQuery.value);
 };
 
 const getBubbleStyle = (index) => {
@@ -182,6 +173,40 @@ const getAssetUrl = (path) => new URL(path, import.meta.url).href;
 </script>
 
 <style scoped>
+/*  Colors  */
+.text-cdec-primary {
+  color: #324c9c;
+}
+
+.hover\:text-cdec-primary:hover {
+  color: #324c9c;
+}
+
+.bg-cdec-primary {
+  background-color: #324c9c;
+}
+
+.focus\:ring-cdec-primary:focus {
+    box-shadow: 0 0 0 2px rgba(50, 76, 156, 0.2); /* Adjust the last value for the desired transparency */
+}
+
+.text-cdec-primary-dark {
+  color: #233670;
+}
+
+.focus\:border-cdec-primary:focus {
+  border-color: #324c9c;
+}
+
+.focus\:ring-cdec-primary-light:focus {
+  box-shadow: 0 0 0 3px rgba(50, 76, 156, 0.15);
+}
+
+.hover\:border-cdec-primary:hover {
+  border-color: #324c9c;
+}
+
+/* Bubbles */
 .bubble {
   position: absolute;
   border-radius: 50%;
@@ -192,6 +217,12 @@ const getAssetUrl = (path) => new URL(path, import.meta.url).href;
   );
   animation: float infinite ease-in-out;
   backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.bubble:hover {
+  transform: scale(1.2);
+  opacity: 0.8;
 }
 
 @keyframes float {
@@ -206,6 +237,7 @@ const getAssetUrl = (path) => new URL(path, import.meta.url).href;
   }
 }
 
+/* Animations */
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out;
 }
@@ -239,6 +271,7 @@ const getAssetUrl = (path) => new URL(path, import.meta.url).href;
   }
 }
 
+/* Transition Group */
 .interview-list-enter-active,
 .interview-list-leave-active {
   transition: all 0.5s ease;
@@ -250,10 +283,44 @@ const getAssetUrl = (path) => new URL(path, import.meta.url).href;
   transform: translateY(30px);
 }
 
+.interview-list-move {
+  transition: transform 0.5s ease;
+}
+
+/* Text Truncation */
 .line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bubble {
+    display: none;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+}
+
+/* Button */
+button:active {
+  transform: scale(0.95);
+}
+
+button:hover {
+  background-color: #4c51bf;
+  color: white;
 }
 </style>

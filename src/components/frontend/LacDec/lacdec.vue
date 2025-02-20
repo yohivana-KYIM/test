@@ -8,41 +8,47 @@
   <br/>
   <section class="body_info">
     <div class="mission_info">
-      <p v-html="presentation.description"></p>
+      <p v-html="presentationDescription" style="text-align: justify; line-height: 1.6;"></p>
     </div>
   </section>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import PresentationService from '../../../services/PresentationService';
-import { useI18n } from 'vue-i18n'; // Import à l'extérieur de setup
+import { useI18n } from 'vue-i18n';
 
 export default {
   name: "PresentationCDEC",
   setup() {
-    const { t } = useI18n(); // useI18n à l'intérieur de setup
-    const presentation = ref({ description: '' }); // Valeur par défaut
+    const { t } = useI18n();
+    const presentationData = ref(null);
 
-    onMounted(async () => {
-      try {
-        const response = await PresentationService.getAllPresentations();
-        console.log("Données récupérées :", response);
-
-        if (Array.isArray(response) && response.length > 0) {
-          presentation.value = response[0]; // Premier élément du tableau
-        } else if (typeof response === "object" && response !== null) {
-          presentation.value = response;
-        } else {
-          console.warn("Aucune présentation trouvée");
-        }
-        console.log("Présentation après récupération :", presentation.value);
-      } catch (error) {
-        console.error("Erreur lors de la récupération des présentations :", error);
+    const presentationDescription = computed(() => {
+      if (presentationData.value?.data?.[0]?.description) {
+        return presentationData.value.data[0].description;
       }
+      return '';
     });
 
-    return { presentation, t }; // Retourne t pour l'utiliser dans le template
+    const fetchPresentation = async () => {
+      try {
+        const response = await PresentationService.getAllPresentations();
+        presentationData.value = response;
+        console.log("Données récupérées :", presentationData.value);
+      } catch (error) {
+        console.error("Erreur lors de la récupération de la présentation:", error);
+      }
+    };
+
+    onMounted(() => {
+      fetchPresentation();
+    });
+
+    return {
+      presentationDescription,
+      t
+    };
   }
 };
 </script>
@@ -50,4 +56,11 @@ export default {
 <style scoped>
 @import "../../../css/missions.css";
 @import "../../../css/lacdec.css";
+
+.mission_info p {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  white-space: pre-line;
+}
 </style>

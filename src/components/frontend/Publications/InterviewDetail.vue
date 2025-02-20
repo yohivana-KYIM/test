@@ -3,7 +3,7 @@
     class="min-h-screen font-sans text-gray-900 bg-gray-100 opacity-0 animate-fade-in"
   >
     <!-- Hero Section -->
-    <header class="relative py-12 bg-white border-b border-gray-200 lg:py-20">
+    <div class="relative py-12 bg-white border-b border-gray-200 lg:py-20">
       <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="grid items-start gap-8 lg:grid-cols-2">
           <div class="space-y-6 lg:sticky lg:top-24">
@@ -50,59 +50,56 @@
           </div>
         </div>
         <div class="flex flex-wrap gap-3 mt-6">
-          <span
+          <!-- <span
             class="px-3 py-1.5 bg-blue-50 text-blue-700 text-sm font-medium rounded-full ring-1 ring-blue-100"
           >
             {{ interview?.source }}
-          </span>
+          </span> -->
+
+          <a
+  :href="interview?.source"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="px-3 py-1.5 bg-blue-50 text-blue-700 text-sm font-medium rounded-full ring-1 ring-blue-100 hover:underline"
+>
+  {{ interview?.source }}
+</a>
+
           <span
             class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-medium rounded-full ring-1 ring-gray-200"
           >
             {{ interview?.date }}
           </span>
+          
         </div>
       </div>
-    </header>
+    </div>
 
-    <!-- Content -->
-    <main class="max-w-4xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
-      <!-- Article Quote -->
-      <div class="mb-16">
-        <blockquote
-          class="relative p-6 border-l-4 border-blue-400 bg-blue-50 rounded-xl"
-        >
-          <div
-            class="absolute flex items-center justify-center w-6 h-6 text-white bg-blue-500 rounded-full -top-3 -left-3"
-          >
-            "
-          </div>
-          <p
-            class="text-xl italic leading-relaxed text-gray-700"
-            style="font-family: 'Merriweather', serif"
-          >
-            {{ interview?.description }}
-          </p>
-        </blockquote>
-      </div>
-
-      <!-- Article Content -->
-      <div
-        class="p-8 space-y-6 transition-shadow bg-white border border-gray-200 shadow-md rounded-xl hover:shadow-lg"
-      >
-        <h2 class="mb-4 text-2xl font-semibold text-gray-900">
-          {{ interview?.details?.introduction }}
-        </h2>
-        <p
-          class="leading-relaxed text-gray-700"
-          style="font-family: 'Open Sans', sans-serif; line-height: 1.7"
-        >
-          {{ interview?.details?.contenu }}
-        </p>
-      </div>
-
-      <!-- Actions -->
     
-    </main>
+   <!-- Content -->
+<main class="max-w-4xl px-4 py-12 mx-auto sm:px-6 lg:px-8">
+  <!-- Article Quote -->
+  <div class="mb-16">
+    <blockquote class="relative p-6 border-l-4 border-blue-400 bg-blue-50 rounded-xl">
+      <div class="absolute flex items-center justify-center w-6 h-6 text-white bg-blue-500 rounded-full -top-3 -left-3">
+        "
+      </div>
+      <p class="text-xl italic leading-relaxed text-gray-700 justified-text" style="font-family: 'Merriweather', serif">
+        {{ interview?.description }}
+      </p>
+    </blockquote>
+  </div>
+
+  <!-- Article Content -->
+  <div class="p-8 space-y-6 transition-shadow bg-white border border-gray-200 shadow-md rounded-xl hover:shadow-lg">
+    <h2 class="mb-4 text-2xl font-semibold text-gray-900">
+      {{ interview?.details?.introduction }}
+    </h2>
+    <div class="justified-text" style="font-family: 'Open Sans', sans-serif;">
+      {{ interview?.details?.contenu }}
+    </div>
+  </div>
+</main>
   </div>
 </template>
 
@@ -147,10 +144,27 @@ const setImageError = (errorState) => {
 };
 </script>
 
+
+
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Open+Sans:wght@400;500;700&family=Poppins:wght@400;600&display=swap");
 
 .animate-fade-in {
   transition: opacity 0.3s ease-in-out;
+}
+
+.justified-text {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  white-space: pre-line;
+}
+
+/* Appliquer le style aux paragraphes à l'intérieur de justified-text */
+.justified-text p {
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  white-space: pre-line;
 }
 </style>
