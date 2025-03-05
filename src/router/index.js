@@ -22,6 +22,7 @@ import Publications from "../components/frontend/Publications/publications.vue";
 import ConsAdmin from "../components/frontend/Serviceslist/cons_admin.vue";
 import ConsConvention from "../components/frontend/Serviceslist/cons_convention.vue";
 import ConsJudiciaire from "../components/frontend/Serviceslist/cons_judiciaire.vue";
+import Depot from "../components/frontend/Serviceslist/depot.vue";
 import TextesReglementaires from "../components/frontend/TextesReglementaires/TextesReglementaires.vue";
 // Importer le composant ActualiteDetail
 import ActualiteDetail from "../components/frontend/Publications/ActualiteDetail.vue";
@@ -56,39 +57,40 @@ const routes = [
   {
     path: "/textes_reglementaires",
     name: "textes_reglementaires",
-    component: TextesReglementaires
+    component: TextesReglementaires,
   },
   { path: "/partenaires", name: "partenaires", component: Partenaires },
   { path: "/cons_admin", name: "cons_admin", component: ConsAdmin },
   {
     path: "/cons_judiciaire",
     name: "cons_judiciaire",
-    component: ConsJudiciaire
+    component: ConsJudiciaire,
   },
+  { path: "/depot", component: Depot },
   {
     path: "/guide_utilisateurs",
     name: "guide_utilisateurs",
-    component: GuideUtilisateurs
+    component: GuideUtilisateurs,
   },
   { path: "/publications", name: "publications", component: Publications },
 
   {
     path: "/interviews", // Page publique pour afficher la liste des interviews
     name: "Interviews",
-    component: Interviews
+    component: Interviews,
   },
   {
     path: "/interviews/:slug", // Page publique pour afficher les détails d'une interview
     name: "InterviewDetail",
     component: InterviewDetail,
-    props: true // Permet de passer les paramètres de l'URL en tant que props
+    props: true, // Permet de passer les paramètres de l'URL en tant que props
   },
 
   {
     path: "/actualites/:slug", // Route pour le détail d'une actualité par slug
     name: "ActualiteDetail",
     component: ActualiteDetail, // Utiliser le composant importé
-    props: true
+    props: true,
   },
 
   { path: "/mediatheque", name: "mediatheque", component: Mediatheque },
@@ -96,13 +98,13 @@ const routes = [
   {
     path: "/cons_convention",
     name: "cons_convention",
-    component: ConsConvention
+    component: ConsConvention,
   },
 
   {
     path: "/inscription/usager",
     name: "inscription_usager",
-    component: Usager
+    component: Usager,
   },
   { path: "/communique", name: "communique", component: Communique },
   // Supprimer ou commenter ces routes car les composants sont commentés en haut
@@ -121,32 +123,32 @@ const routes = [
       {
         path: "dashboard",
         name: "dashboard",
-        component: Admin
+        component: Admin,
       },
       {
         path: "slides",
         name: "slideList",
-        component: SlideList
+        component: SlideList,
       },
       {
         path: "sponsors",
         name: "sponsorList",
-        component: SponsorList
+        component: SponsorList,
       },
       {
         path: "missions",
         name: "missionList",
-        component: MissionList
+        component: MissionList,
       },
       {
         path: "videos",
         name: "videoList",
-        component: VideoList
+        component: VideoList,
       },
       {
         path: "presentation",
         name: "presentationList",
-        component: PresentationList
+        component: PresentationList,
       },
 
       { path: "domaines", name: "domaineList", component: DomaineList },
@@ -158,7 +160,7 @@ const routes = [
 
         name: "PublicationList",
 
-        component: PublicationList
+        component: PublicationList,
       },
 
       {
@@ -166,19 +168,19 @@ const routes = [
 
         name: "CommuniqueList",
 
-        component: CommuniqueList
+        component: CommuniqueList,
       },
 
       {
         path: "subscriber",
         name: "SubscriberList",
-        component: SubscriberList
+        component: SubscriberList,
       },
 
       {
         path: "interviews", // Chez l'admin pour gérer les interviews
         name: "InterviewsList",
-        component: InterviewsList
+        component: InterviewsList,
       },
 
       {
@@ -186,26 +188,26 @@ const routes = [
 
         name: "ReglementationList",
 
-        component: ReglementationList
+        component: ReglementationList,
       },
       {
         path: "actualites",
         name: "actualiteList",
-        component: ActualiteList
+        component: ActualiteList,
       },
       {
         path: "blocs",
         name: "blocslist",
-        component: blocslist
+        component: blocslist,
       },
       {
         path: "pays",
         name: "payslist",
         component: payslist,
-        meta: { requiresAuth: true }
-      }
-    ]
-  }
+        meta: { requiresAuth: true },
+      },
+    ],
+  },
 ];
 
 const router = createRouter({

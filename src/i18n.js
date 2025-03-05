@@ -2,32 +2,57 @@ import { createI18n } from "vue-i18n";
 
 const messages = {
   en: {
-    welcome: " Caisse des Dépots Et Consignations",
+    welcome: "Deposits and Consignments Fund",
     search: "Search",
+
+    title: "Deposits at CDEC",
+    depositDescription:
+      "Discover the mechanisms and advantages of deposits managed by the Caisse des Dépôts et Consignations.",
+    definitionTitle: "Definition of Deposit",
+    definitionText:
+      "The Deposit is a material act by which the CDEC receives a sum of money, a security or precious metals from others to keep them and return them.",
+    depositTypesTitle: "Deposit Categories",
+    depositTypesDescription:
+      "Each category represents a specific area of ​​deposit management, reflecting the diversity and complexity of the CDEC's missions.",
+    advantagesTitle: "Advantages of Deposits",
+    depositTypes: {
+      auxiliairesJustice: "Funds of judicial auxiliaries",
+      notariaux: "Notarial deposits",
+      comptesInactifs: "Inactive bank accounts",
+      contrepartie: "Counterparty funds",
+      expropriation: "Expropriation compensation",
+      liquidationEntreprises: "Company liquidation",
+      fondsJudiciaires: "Judicial funds",
+    },
+    advantagesList: {
+      economiqueTitle: "Economic Development",
+      economiqueDescription:
+        "Stimulate national economic growth through innovative investment strategies and dynamic financial mechanisms.",
+      publicTitle: "Public Service",
+      publicDescription:
+        "Guarantee the transparency, security and efficiency of financial transactions in the service of the general interest.",
+    },
+
     home: "Home",
     cdec: "CDEC",
     presentation: "Presentation",
     services: "Services",
     news: "News",
+    deposits: "Deposits",
     governance: "Governance",
     governance_background_image_alt: "Background image representing governance",
     technical_financial_supervision: "Technical / Financial Supervision",
     ministry_of_finance: "Ministry of Finance (MINFI)",
     board_of_directors: "Board of Directors",
     president: "President",
-    dg_treasury:
-      "Director General of the Treasury, Financial and Monetary Cooperation",
+    dg_treasury: "Director General of the Treasury, Financial and Monetary Cooperation",
     board_members: "Members of the Board of Directors",
-    representative_presidency:
-      "Representative of the Presidency of the Republic",
-    representative_prime_minister:
-      "Representative of the Services of the Prime Minister",
-    representative_finance_ministry:
-      "Representative of the Ministry of Finance",
+    representative_presidency: "Representative of the Presidency of the Republic",
+    representative_prime_minister: "Representative of the Services of the Prime Minister",
+    representative_finance_ministry: "Representative of the Ministry of Finance",
     representative_economy_ministry:
       "Representative of the Ministry of Economy, Planning and Regional Development",
-    representative_justice_ministry:
-      "Representative of the Ministry of Justice",
+    representative_justice_ministry: "Representative of the Ministry of Justice",
 
     ceo_message: "Message from the Director General",
     director_general: "Director General",
@@ -41,9 +66,8 @@ const messages = {
     projects_programs: "Projects and Programs",
     admin_deposits: "Administrative Deposits",
 
-        admin_deposits_desc:
-
- "is a legal operation where funds or assets are deposited with an administrative authority or public body as a guarantee or for provisional settlement of a disputed situation or for other legal reasons.",
+    admin_deposits_desc:
+      "is a legal operation where funds or assets are deposited with an administrative authority or public body as a guarantee or for provisional settlement of a disputed situation or for other legal reasons.",
 
     judicial_deposits: "Judicial Deposits",
     judicial_deposits_desc:
@@ -133,8 +157,7 @@ const messages = {
     sponsor_logo: "Logo of {sponsorName}",
 
     administrative_deposits: "Administrative Deposits",
-    admin_deposits_tagline:
-      "Secure your funds and assets in complete legality.",
+    admin_deposits_tagline: "Secure your funds and assets in complete legality.",
     what_is_it: "What is it?",
 
     what_are_the_advantages: "What are its advantages?",
@@ -147,8 +170,7 @@ const messages = {
     reducing_fraud_risks: "Reducing fraud risks:",
     reducing_fraud_risks_desc:
       "Consignment with a public authority reduces the risk of fraud or misuse of funds, as the authority acts as a neutral and secure third party.",
-    encouraging_quick_dispute_resolution:
-      "Encouraging quick dispute resolution:",
+    encouraging_quick_dispute_resolution: "Encouraging quick dispute resolution:",
     encouraging_quick_dispute_resolution_desc:
       "The presence of consigned funds or assets may encourage the parties to resolve disputes more quickly, knowing that the resources are immobilized until the resolution.",
     our_different_activities: "Our different activities",
@@ -162,8 +184,7 @@ const messages = {
     deposits_personal_contribution:
       "Consignments for personal contribution and advance on vehicle purchase",
     deposits_timber_harvesting: "Consignments for timber harvesting",
-    deposits_share_emoluments:
-      "Consignments of the share of emoluments allocated to the courts",
+    deposits_share_emoluments: "Consignments of the share of emoluments allocated to the courts",
     deposits_penal_labor: "Consignments for penal labor",
     curatorship_funds: "Curatorship funds",
 
@@ -225,15 +246,13 @@ const messages = {
     repatriation_guarantees: "Repatriation guarantees",
     guarantees_election_candidates: "Guarantees of candidates for elections",
     funds_placed_escrow: "Funds placed in escrow",
-    funds_from_seizure_sales:
-      "Funds from the proceeds of sale on seizure pending distribution",
+    funds_from_seizure_sales: "Funds from the proceeds of sale on seizure pending distribution",
     funds_registry: "Funds of the registries",
     deposits_penal_labor: "Consignments for penal labor",
     curatorship_funds: "Curatorship funds",
     funds_unavailable_investigation:
       "Funds made unavailable by the effect of an investigation or judicial investigation",
-    withholdings_following_seizures:
-      "Withholdings made following seizures on remuneration",
+    withholdings_following_seizures: "Withholdings made following seizures on remuneration",
 
     press_releases_cdec: "CDEC Press Releases",
     no_press_releases_available: "No press releases available",
@@ -270,23 +289,21 @@ const messages = {
     activities: "Our different activities",
     activity_1: "Bonds of public accountants",
     activity_2: "Guarantees on public contracts",
-    activity_3:
-      "Guarantees for occupation of administrative housing or public domain",
+    activity_3: "Guarantees for occupation of administrative housing or public domain",
     activity_4: "Guarantees of ministerial public officers",
     activity_5: "Repatriation bonds",
     activity_6: "Bonds of candidates for elections",
-    activity_7:
-      "Consignments for personal contribution and advance on vehicle purchase",
+    activity_7: "Consignments for personal contribution and advance on vehicle purchase",
     activity_8: "Consignments for logging",
-    activity_9:
-      "Consignments of the quota share of fees allocated to the courts",
+    activity_9: "Consignments of the quota share of fees allocated to the courts",
     activity_10: "Consignments for criminal labor",
-    activity_11: "Guardianship fund"
+    activity_11: "Guardianship fund",
   },
   fr: {
     consignation_title: "La consignation administrative",
     consignation_subtitle:
       "Consignation Administrative : Sécurisez vos fonds et biens en toute légalité.",
+    deposits: "Dépôt",
     what_is_it: "Qu'est ce que c'est?",
     consignation_definition:
       "<b>La consignation administrative</b> est une procédure légale par laquelle des fonds ou des biens sont déposés auprès d'une autorité administrative ou d'un organisme public à titre de garantie ou de règlement provisoire d'une situation en litige ou pour d'autres raisons légales.",
@@ -303,16 +320,13 @@ const messages = {
     activities: "Nos différentes activités",
     activity_1: "Cautionnements des comptables publics",
     activity_2: "Cautionnements sur les marchés publics",
-    activity_3:
-      "Cautionnements pour occupation d’un logement administratif ou du domaine public",
+    activity_3: "Cautionnements pour occupation d’un logement administratif ou du domaine public",
     activity_4: "Cautionnements des officiers publics ministériels",
     activity_5: "Cautionnements de rapatriement",
     activity_6: "Cautionnements des candidats aux élections",
-    activity_7:
-      "Consignations pour apport personnel et avance sur achat de véhicule",
+    activity_7: "Consignations pour apport personnel et avance sur achat de véhicule",
     activity_8: "Consignations pour coupe de bois",
-    activity_9:
-      "Consignations de la quote-part des émoluments affectés aux tribunaux",
+    activity_9: "Consignations de la quote-part des émoluments affectés aux tribunaux",
     activity_10: "Consignations pour main-d’œuvre pénale",
     activity_11: "Fonds de la curatelle",
     cdec_media_library: "Médiathèque CDEC",
@@ -335,6 +349,33 @@ const messages = {
     published_on: "Publié le",
     open_document: "Ouvrir le document",
     welcome: "Caisse des Dépots Et Consignations",
+
+    title: "Les Dépôts à la CDEC",
+    definitionTitle: "Définition du Dépôt",
+    definitionText:
+      "Le Dépôt est un acte matériel par lequel la CDEC reçoit une somme d'argent, une valeur mobilière ou des métaux précieux d'autrui à charge de les garder et de les restituer.",
+    depositTypesTitle: "Catégories des Dépôts",
+    depositTypesDescription:
+      "Chaque catégorie représente un domaine spécifique de gestion des dépôts, reflétant la diversité et la complexité des missions de la CDEC.",
+    advantagesTitle: "Avantages des Dépôts",
+    depositTypes: {
+      auxiliairesJustice: "Fonds des auxiliaires de justice",
+      notariaux: "Dépôts notariaux",
+      comptesInactifs: "Comptes bancaires inactifs",
+      contrepartie: "Fonds de contrepartie",
+      expropriation: "Indemnisations d'expropriation",
+      liquidationEntreprises: "Liquidation d'entreprises",
+      fondsJudiciaires: "Fonds judiciaires",
+    },
+    advantagesList: {
+      economiqueTitle: "Développement Économique",
+      economiqueDescription:
+        "Stimuler la croissance économique nationale à travers des stratégies d'investissement innovantes et des mécanismes financiers dynamiques.",
+      publicTitle: "Service Public",
+      publicDescription:
+        "Garantir la transparence, la sécurité et l'efficacité des transactions financières au service de l'intérêt général.",
+    },
+
     search: "Rechercher",
     home: "Accueil",
     cdec: "CDEC",
@@ -388,18 +429,15 @@ const messages = {
     engineering: "Ingénierie",
     administration: "Administration",
     governance: "Gouvernance",
-    governance_background_image_alt:
-      "Image de fond représentant la gouvernance",
+    governance_background_image_alt: "Image de fond représentant la gouvernance",
     technical_financial_supervision: "Tutelle Technique / Financière",
     ministry_of_finance: "Ministère des Finances (MINFI)",
     board_of_directors: "Conseil d'Administration",
     president: "Président",
-    dg_treasury:
-      "Directeur Général du Trésor, de la Coopération Financière et Monétaire",
+    dg_treasury: "Directeur Général du Trésor, de la Coopération Financière et Monétaire",
     board_members: "Membres du Conseil d'Administration",
     representative_presidency: "Représentant de la Présidence de la République",
-    representative_prime_minister:
-      "Représentant des Services du Premier ministre",
+    representative_prime_minister: "Représentant des Services du Premier ministre",
     representative_finance_ministry: "Représentant du Ministère des Finances",
     representative_economy_ministry:
       "Représentant du Ministère de l'Économie, de la Planification et de l'Aménagement du Territoire",
@@ -482,8 +520,7 @@ const messages = {
     reducing_fraud_risks: "Réduction des risques de fraude :",
     reducing_fraud_risks_desc:
       "La consignation auprès d'une autorité publique réduit les risques de fraude ou de détournement des fonds, car l'autorité agit en tant que tiers neutre et sécurisé.",
-    encouraging_quick_dispute_resolution:
-      "Encouragement à la résolution rapide des litiges :",
+    encouraging_quick_dispute_resolution: "Encouragement à la résolution rapide des litiges :",
     encouraging_quick_dispute_resolution_desc:
       "La présence de fonds ou de biens consignés peut inciter les parties à résoudre les litiges plus rapidement, sachant que les ressources sont immobilisées jusqu'à la résolution.",
     our_different_activities: "Nos différentes activités",
@@ -491,11 +528,9 @@ const messages = {
     guarantees_public_markets: "Cautionnements sur les marchés publics",
     guarantees_occupation_admin_housing:
       "Cautionnements pour occupation d’un logement administratif ou du domaine public",
-    guarantees_public_officials:
-      "Cautionnements des officiers publics ministériels",
+    guarantees_public_officials: "Cautionnements des officiers publics ministériels",
     repatriation_guarantees: "Cautionnements de rapatriement",
-    guarantees_election_candidates:
-      "Cautionnements des candidats aux élections",
+    guarantees_election_candidates: "Cautionnements des candidats aux élections",
     deposits_personal_contribution:
       "Consignations pour apport personnel et avance sur achat de véhicule",
     deposits_timber_harvesting: "Consignations pour coupe de bois",
@@ -505,6 +540,8 @@ const messages = {
     curatorship_funds: "Fonds de la curatelle",
     presentation: "Présentation",
     news: "Actualités",
+    depositDescription:
+      "Découvrez les mécanismes et les avantages des dépôts gérés par la Caisse des Dépôts et Consignations",
     newsletter: "NEWSLETTER",
     newsletter_placeholder: "Votre email ici",
     subscribe: "Souscrire",
@@ -513,8 +550,7 @@ const messages = {
     chat_online: "Chat en ligne",
     chat_placeholder: "Écrivez votre message...",
     chat_greeting: "Bonjour ! Comment puis-je vous aider ?",
-    chat_response:
-      "Merci pour votre message. Un conseiller vous répondra bientôt.",
+    chat_response: "Merci pour votre message. Un conseiller vous répondra bientôt.",
     subscription_success: "Votre inscription a été prise en compte.",
 
     administrative_deposits: "Administrative Deposits",
@@ -533,8 +569,7 @@ const messages = {
     reducing_fraud_risks: "Reducing fraud risks:",
     reducing_fraud_risks_desc:
       "Consignment with a public authority reduces the risk of fraud or misuse of funds, as the authority acts as a neutral and secure third party.",
-    encouraging_quick_dispute_resolution:
-      "Encouraging quick dispute resolution:",
+    encouraging_quick_dispute_resolution: "Encouraging quick dispute resolution:",
     encouraging_quick_dispute_resolution_desc:
       "The presence of consigned funds or assets may encourage the parties to resolve disputes more quickly, knowing that the resources are immobilized until the resolution.",
     our_different_activities: "Our different activities",
@@ -548,8 +583,7 @@ const messages = {
     deposits_personal_contribution:
       "Consignments for personal contribution and advance on vehicle purchase",
     deposits_timber_harvesting: "Consignments for timber harvesting",
-    deposits_share_emoluments:
-      "Consignments of the share of emoluments allocated to the courts",
+    deposits_share_emoluments: "Consignments of the share of emoluments allocated to the courts",
     deposits_penal_labor: "Consignments for penal labor",
     curatorship_funds: "Curatorship funds",
 
@@ -581,11 +615,9 @@ const messages = {
       "Consignations consécutives à une décision judiciaire exécutoire nonobstant opposition ou appel",
     deposits_following_provisional_enforcement:
       "Consignations consécutives aux décisions exécutoires par provision",
-    guarantees_public_officials:
-      "Cautionnements des officiers publics ministériels",
+    guarantees_public_officials: "Cautionnements des officiers publics ministériels",
     repatriation_guarantees: "Cautionnements de rapatriement",
-    guarantees_election_candidates:
-      "Cautionnements des candidats aux élections",
+    guarantees_election_candidates: "Cautionnements des candidats aux élections",
     funds_placed_escrow: "Fonds placés sous séquestre",
     funds_from_seizure_sales:
       "Fonds issus des produits de vente sur saisie en attente de distribution",
@@ -595,8 +627,8 @@ const messages = {
     funds_unavailable_investigation:
       "Fonds rendus indisponibles par l’effet d’une enquête ou d’une instruction judiciaire",
     withholdings_following_seizures:
-      "Retenues opérées à la suite des saisies sur les rémunérations"
-  }
+      "Retenues opérées à la suite des saisies sur les rémunérations",
+  },
 };
 
 // 

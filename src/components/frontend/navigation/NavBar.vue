@@ -1,10 +1,7 @@
-// src/components/NavBar.vue
 <template>
   <nav>
     <div class="logo">
-      <router-link to="/"
-        ><img src="../../../assets/cdec.png" alt=""
-      /></router-link>
+      <router-link to="/"><img src="../../../assets/cdec.png" alt="" /></router-link>
     </div>
     <div class="toggle">
       <a href="#"><ion-icon name="menu-outline"></ion-icon></a>
@@ -47,6 +44,9 @@
           </li>
           <li>
             <router-link to="/cons_convention" class="lien">{{ $t('conventional_deposits') }}</router-link>
+          </li>
+          <li>
+            <router-link to="/depot" class="lien">{{ $t('deposits') }}</router-link>
           </li>
         </ul>
       </li>
