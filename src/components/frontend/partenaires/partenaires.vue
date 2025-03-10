@@ -58,4 +58,8 @@ onMounted(() => {
 
 <style scoped>
 @import "../../../css/nos_partenaires.css";
+.info_partenaire p {
+  text-align: justify;
+}
+
 </style>

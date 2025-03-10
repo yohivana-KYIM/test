@@ -4,7 +4,8 @@ const messages = {
   en: {
     welcome: "Deposits and Consignments Fund",
     search: "Search",
-
+    deposits: "Deposit",
+     deposit_descr: "is a material act by which the CDEC receives a sum of money, a security, or precious metals from another party with the obligation to keep and return them.",
     title: "Deposits at CDEC",
     depositDescription:
       "Discover the mechanisms and advantages of deposits managed by the Caisse des Dépôts et Consignations.",
@@ -64,23 +65,23 @@ const messages = {
     regulatory_texts: "Regulatory Texts",
     cooperation_partnerships: "Cooperation and Partnerships",
     projects_programs: "Projects and Programs",
-    admin_deposits: "Administrative Deposits",
+    admin_deposits: "Administrative Consignment",
 
     admin_deposits_desc:
       "is a legal operation where funds or assets are deposited with an administrative authority or public body as a guarantee or for provisional settlement of a disputed situation or for other legal reasons.",
 
-    judicial_deposits: "Judicial Deposits",
+    judicial_deposits: "Judicial Consignment",
     judicial_deposits_desc:
-      "Judicial deposit is a legal procedure that allows a sum of money or an asset to be placed under the authority of a court during the course of litigation.",
-    conventional_deposits: "Conventional Deposits",
+      "is a legal procedure that allows a sum of money or an asset to be placed under the authority of a court during the course of litigation.",
+    conventional_deposits: "Conventional Consignment",
     conventional_deposits_desc:
-      "A conventional deposit is a practice where two parties, in a private agreement, decide to entrust a sum of money or an asset to a trusted third party or financial institution for safekeeping until certain conditions are met.",
+      "is a practice where two parties, in a private agreement, decide to entrust a sum of money or an asset to a trusted third party or financial institution for safekeeping until certain conditions are met.",
     activity_domains: "Activity Domains",
 
     cdec: "CDEC", // or "Deposit and Consignment Fund"
     cdec_description:
-      "The Caisse des Dépôts et Consignations (CDEC) of Cameroon manages and secures public and private funds. It centralizes funds from various sources such as guarantees and judicial deposits.",
-
+      "The Deposit and Consignment Fund (CDEC) of Cameroon manages and secures public and private funds. It centralizes funds from various sources, such as guarantees and judicial deposits.",
+    deposit: "Dépôt",
     investment: "Investment",
     infrastructure: "Infrastructure",
     sme: "SMEs",
@@ -156,7 +157,7 @@ const messages = {
     loading_sponsors: "Loading sponsors",
     sponsor_logo: "Logo of {sponsorName}",
 
-    administrative_deposits: "Administrative Deposits",
+    administrative_deposits: "Administrative Consignment",
     admin_deposits_tagline: "Secure your funds and assets in complete legality.",
     what_is_it: "What is it?",
 
@@ -188,7 +189,7 @@ const messages = {
     deposits_penal_labor: "Consignments for penal labor",
     curatorship_funds: "Curatorship funds",
 
-    conventional_deposits: "Conventional Deposits",
+    conventional_deposits: "Conventional Consignment",
     conventional_deposits_tagline:
       "Conventional Consignment: A safe solution to free yourself from your obligations.",
     what_is_it: "What is it?",
@@ -214,7 +215,7 @@ const messages = {
     our_different_activities: "Our different activities",
     guarantees_water_electricity_companies:
       "Guarantees with water, electricity, telephone and housing companies",
-    judicial_deposits: "Judicial Deposits",
+    judicial_deposits: "Judicial Consignment",
     judicial_deposits_tagline:
       "Judicial Consignment: Secure your interests during disputes with efficiency and fairness.",
     what_is_it: "What is it?",
@@ -272,7 +273,7 @@ const messages = {
     watch: "Watch",
     open: "Open",
     no_videos_available: "No videos available.",
-
+    deposit: "Deposit",
     consignation_title: "Administrative Consignment",
     consignation_subtitle:
       "Administrative Consignment: Secure your funds and assets in complete legality.",
@@ -301,9 +302,13 @@ const messages = {
   },
   fr: {
     consignation_title: "La consignation administrative",
+    deposits: "Dépôt",
+    deposit_descr:
+      
+     "est un acte matériel par lequel la CDEC reçoit une somme d'argent, une valeur mobilière ou des métaux précieux d'autrui à charge de les garder et de les restituer.",
     consignation_subtitle:
       "Consignation Administrative : Sécurisez vos fonds et biens en toute légalité.",
-    deposits: "Dépôt",
+
     what_is_it: "Qu'est ce que c'est?",
     consignation_definition:
       "<b>La consignation administrative</b> est une procédure légale par laquelle des fonds ou des biens sont déposés auprès d'une autorité administrative ou d'un organisme public à titre de garantie ou de règlement provisoire d'une situation en litige ou pour d'autres raisons légales.",
@@ -406,10 +411,10 @@ const messages = {
     projects_programs: "Projets et Programmes",
     admin_deposits: "La Consignation Administrative",
 
-    judicial_deposits: "Consignations Judiciaires",
+    judicial_deposits: "La Consignation Judiciaire",
     judicial_deposits_desc:
       "La Consignation Judiciaire est une procédure juridique qui permet de mettre une somme d’argent ou un bien sous l’autorité d’une autorité (souvent un tribunal) pendant la durée d’un litige.",
-    conventional_deposits: "Consignations Conventionnelles",
+    conventional_deposits: "La Consignation Conventionnelle",
     conventional_deposits_desc:
       "La Consignation conventionnelle est une pratique par laquelle deux parties, dans le cadre d’un accord privé décident de confier une somme d’argent ou un bien à un tiers de confiance ou à un établissement financier pour en assurer la garde jusqu’à ce que certaines conditions soient remplies.",
     activity_domains: "Domaines D'Activité",

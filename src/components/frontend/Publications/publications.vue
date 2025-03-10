@@ -28,8 +28,10 @@
             <img :src="publication.photo" :alt="publication.title" />
           </div>
           <div class="content">
-            <h4 class="truncate group-hover:text-blue-800" :title="publication.title">
-              {{ publication.title }}
+           
+           
+            <h4 class="group-hover:text-blue-800" :title="publication.title">
+   {{ publication.title }}
             </h4>
             <span v-if="publication.publication_date">
               <i class="mr-2 text-gray-400 fas fa-calendar-alt"></i>
