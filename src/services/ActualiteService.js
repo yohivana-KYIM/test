@@ -16,9 +16,9 @@ const ActualiteService = {
     }
   },
 
-  async getActualiteBySlug(slug) {  // Changed to slug
+  async getActualiteBySlug(slug) {  
     try {
-      const response = await DataService.get(`/api/actualites/${slug}`, { // Changed to slug
+      const response = await DataService.get(`/api/actualites/slug/${slug}`, { 
         headers: { "Accept-Language": localStorage.getItem("locale") || "fr" },
       });
       return response.data;

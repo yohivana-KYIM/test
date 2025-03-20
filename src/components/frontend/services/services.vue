@@ -38,8 +38,8 @@ export default {
       },
       {
         id: 4,
-        imageType: 'png', // Change from 'svg' to 'png'
-        image: depotImage, // Add the imported image
+        imageType: 'png', 
+        image: depotImage, 
         title: 'deposit',
         description: 'deposit_descr',
         link: '/depot'

@@ -211,8 +211,8 @@ import ActualiteService from "../../../services/ActualiteService";
 import Swal from "sweetalert2";
 
 const props = defineProps({
-  actualiteId: {
-    type: String, // Changed to String for slugs
+ actualiteId: {
+    type: String,
     required: true,
   },
 });
@@ -246,60 +246,84 @@ const fetchActualite = async () => {
     const response = await ActualiteService.getActualiteBySlug(props.actualiteId);
 
     if (response) {
-        actualite.value = response;
+      actualite.value = {
+        titre: response.titre || "",
+        description: response.description || "",
+        image: response.image || null,
+        datePublication: response.datePublication || null,
+        details: {
+          imagePrincipale: response.details?.imagePrincipale || null,
+          galleryPhotos: response.details?.galleryPhotos || [],
+        },
+        slug: response.slug || null,
+      };
 
-        // Ensure details object exists
-        if (!actualite.value.details) {
-            actualite.value.details = {
-                imagePrincipale: null,
-                galleryPhotos: [],
-            };
-        }
+      if (response.details?.galleryPhotos) {
+        existingGalleryPhotos.value = [...response.details.galleryPhotos];
+      }
 
-        if (actualite.value.details && actualite.value.details.galleryPhotos) {
-            existingGalleryPhotos.value = [...actualite.value.details.galleryPhotos];
-        }
+      if (response.image) {
+        imagePreview.value = getImageUrl(response.image);
+      }
 
-        // Preview existing images
-        if (actualite.value.image) {
-            imagePreview.value = getImageUrl(actualite.value.image);
-        }
-
-        if (actualite.value.details.imagePrincipale) {
-            imagePrincipaleDetailPreview.value = getImageUrl(actualite.value.details.imagePrincipale);
-        }
-    } else {
-        // Handle the case where no data is returned for the slug.
-        Swal.fire({
-            title: "Erreur!",
-            text: "Aucune actualité trouvée avec ce slug.",
-            icon: "error",
-        });
-        emit('close');
+      if (response.details?.imagePrincipale) {
+        imagePrincipaleDetailPreview.value = getImageUrl(response.details.imagePrincipale);
+      }
     }
-
   } catch (error) {
-    console.error(
-      "Erreur lors de la récupération de l'actualité :",
-      error
-    );
-
-    if (error.response && error.response.status === 404) {
-      Swal.fire({
-        title: "Erreur!",
-        text: "Actualité non trouvée.",
-        icon: "error",
-      });
-      emit('close');
-    } else {
-      Swal.fire({
-        title: "Erreur!",
-        text: `Échec de la récupération de l'actualité : ${error.message}`,
-        icon: "error",
-      });
-    }
+    console.error("Erreur lors de la récupération de l'actualité :", error);
+    Swal.fire({
+      title: "Erreur!",
+      text: "Impossible de récupérer les données de l'actualité",
+      icon: "error",
+    });
   }
 };
+  
+
+// const fetchActualite = async () => {
+
+
+//   try {
+//     const response = await ActualiteService.getActualiteBySlug(props.actualiteId);
+
+//     if (response) {
+//         actualite.value = response;
+
+//         // Ensure details object exists
+//         if (!actualite.value.details) {
+//             actualite.value.details = {
+//                 imagePrincipale: null,
+//                 galleryPhotos: [],
+//             };
+//         }
+
+//         if (actualite.value.details && actualite.value.details.galleryPhotos) {
+//             existingGalleryPhotos.value = [...actualite.value.details.galleryPhotos];
+//         }
+
+//         // Preview existing images
+//         if (actualite.value.image) {
+//             imagePreview.value = getImageUrl(actualite.value.image);
+//         }
+
+//         if (actualite.value.details.imagePrincipale) {
+//             imagePrincipaleDetailPreview.value = getImageUrl(actualite.value.details.imagePrincipale);
+//         }
+//     } 
+ 
+
+//   } catch (error) {
+//     console.error(
+//       "Erreur lors de la récupération de l'actualité :",
+//       error
+//     );
+
+    
+     
+ 
+//   }
+// };
 
 const getImageUrl = (path) => {
   return path ? path : '/placeholder-image.png'
@@ -367,6 +391,54 @@ const removeGalleryPhoto = (index) => {
   galleryPreviews.value.splice(index, 1);
 };
 
+// const updateActualiteForm = async () => {
+//   try {
+//     const formData = new FormData();
+//     formData.append("titre", actualite.value.titre);
+//     formData.append("description", actualite.value.description);
+
+//     if (actualite.value.image) {
+//       formData.append("image", actualite.value.image);
+//     }
+//     if (actualite.value.datePublication) {
+//       formData.append("datePublication", actualite.value.datePublication);
+//     }
+
+//     if (actualite.value.details.imagePrincipale) {
+//       formData.append("imagePrincipale", actualite.value.details.imagePrincipale);
+//     }
+
+//     // Append new gallery photos
+//     actualite.value.details.galleryPhotos.forEach((photo) => {
+//       if (typeof photo !== "string") {
+//         formData.append("galleryPhotos[]", photo);
+//       }
+//     });
+
+//     // Append existing images urls removed from the gallery
+//     removedGalleryPhotos.value.forEach((photoUrl) => {
+//       formData.append("removedGalleryPhotos[]", photoUrl);
+//     });
+
+
+//     await ActualiteService.updateActualite(props.actualiteId, formData);
+//    emit('close');
+//     Swal.fire({
+//       toast: true,
+//       position: "top-end",
+//       icon: "success",
+//       title: "Actualité mise à jour avec succès",
+//       showConfirmButton: false,
+//       timer: 3000,
+//     });
+
+  
+//   } catch (error) {
+//     console.error("Erreur lors de la mise à jour de l'actualité :", error);
+    
+//   }
+// };
+
 const updateActualiteForm = async () => {
   try {
     const formData = new FormData();
@@ -396,9 +468,8 @@ const updateActualiteForm = async () => {
       formData.append("removedGalleryPhotos[]", photoUrl);
     });
 
-
-    await ActualiteService.updateActualite(actualite.value.slug, formData); // Using slug as ID
-
+    await ActualiteService.updateActualite(props.actualiteId, formData);
+    emit('close');
     Swal.fire({
       toast: true,
       position: "top-end",
@@ -407,14 +478,11 @@ const updateActualiteForm = async () => {
       showConfirmButton: false,
       timer: 3000,
     });
-
-    emit("actualiteUpdated");
-    emit("close");
   } catch (error) {
     console.error("Erreur lors de la mise à jour de l'actualité :", error);
     Swal.fire({
       title: "Erreur!",
-      text: `Échec de la mise à jour de l'actualité : ${error}`,
+      text: "Une erreur s'est produite lors de la mise à jour de l'actualité",
       icon: "error",
     });
   }

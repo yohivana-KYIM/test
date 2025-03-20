@@ -16,7 +16,7 @@ import Partenaires from "../components/frontend/partenaires/partenaires.vue";
 import Communique from "../components/frontend/Publications/communique.vue";
 import GuideUtilisateurs from "../components/frontend/Publications/guide_utilisateurs.vue";
 import Interviews from "../components/frontend/Publications/Interviews.vue";
-
+import Infocdec from "../components/frontend/Publications/infocdec.vue"
 import Mediatheque from "../components/frontend/Publications/mediatheque.vue";
 import Publications from "../components/frontend/Publications/publications.vue";
 import ConsAdmin from "../components/frontend/Serviceslist/cons_admin.vue";
@@ -94,6 +94,7 @@ const routes = [
   },
 
   { path: "/mediatheque", name: "mediatheque", component: Mediatheque },
+  { path: "/infocdec", name: "infocdec", component: Infocdec },
 
   {
     path: "/cons_convention",
@@ -107,15 +108,7 @@ const routes = [
     component: Usager,
   },
   { path: "/communique", name: "communique", component: Communique },
-  // Supprimer ou commenter ces routes car les composants sont commentés en haut
-  // {
-  //   path: "/conseil_administration",
-  //   name: "conseil_administration",
-  //   component: Conseil
-  // },
-  // { path: "/fetetravail", name: "fetetravail", component: Fetetravail },
-  // { path: "/journeefemme", name: "journeefemme", component: Journeefemme },
-  // { path: "/remisefonds", name: "remisefonds", component: Remisefonds },
+  
   { path: "/loginadmin", name: "loginadmin", component: LoginAdmin },
   {
     path: "/admin",
